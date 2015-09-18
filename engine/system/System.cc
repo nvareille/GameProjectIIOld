@@ -24,7 +24,3 @@ void StrawberryMilk::System::setActive() {
 void StrawberryMilk::System::setPause() {
   mState = StrawberryMilk::System::state::PAUSE;
 }
-
-int main() {
-  return 0;
-}
