@@ -1,5 +1,6 @@
 # GameProjectII
-
+## Repository Architecture
+![alt text](https://github.com/nvareille/GameProjectII/blob/master/Architecture.png "Repository's Architecture")
 ## How to commit ?
 ### Branches
 - Master | The latest stable release
