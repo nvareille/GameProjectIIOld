@@ -1,7 +1,7 @@
 #include "Vector2.hh"
 #include <stdexcept>
 
-using namespace StrawberryMilk;
+using namespace StrawberryMilk::Math;
 
 //constructors & destructors
 Vector2::Vector2()
@@ -40,16 +40,6 @@ Vector2::~Vector2()
 }
 
 //getters & setters
-
-void	Vector2::setX(float _x)
-{
-	x = _x;
-}
-
-void	Vector2::setY(float _y)
-{
-	y = _y;
-}
 
 void	Vector2::update(float _x, float _y)
 {

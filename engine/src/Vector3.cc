@@ -1,7 +1,7 @@
 #include "Vector3.hh"
 #include <stdexcept>
 
-using namespace StrawberryMilk;
+using namespace StrawberryMilk::Math;
 
 //constructors & destructors
 Vector3::Vector3()
@@ -45,21 +45,6 @@ Vector3::~Vector3()
 }
 
 //getters & setters
-void Vector3::setX(float _x)
-{
-	x = _x;
-}
-
-void Vector3::setY(float _y)
-{
-	y = _y;
-}
-
-void Vector3::setZ(float _z)
-{
-	z = _z;
-}
-
 void Vector3::update(float _x, float _y, float _z)
 {
 	x = _x;
