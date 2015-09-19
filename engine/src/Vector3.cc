@@ -6,9 +6,9 @@ using namespace StrawberryMilk;
 //constructors & destructors
 Vector3::Vector3()
 {
-	vx = 0;
-	vy = 0;
-	vz = 0;
+	vx = 0.0f;
+	vy = 0.0f;
+	vz = 0.0f;
 }
 
 Vector3::Vector3(float _x, float _y, float _z)
@@ -23,6 +23,14 @@ Vector3::Vector3(const Vector3 & _v)
 	vx = _v.x();
 	vy = _v.y();
 	vz = _v.z();
+}
+
+Vector3::Vector3(Vector3 && _v)
+{
+	vx = _v.x();
+	vy = _v.y();
+	vz = _v.z();
+	_v.update(0.0f, 0.0f, 0.0f);
 }
 
 void Vector3::operator=(const Vector3 & _v)

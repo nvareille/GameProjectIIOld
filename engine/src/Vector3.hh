@@ -8,6 +8,8 @@ namespace StrawberryMilk
 		float vx;
 		float vy;
 		float vz;
+	private:
+		Vector3(Vector3 &&);
 	public:
 		/*	constructors & destructors */
 		Vector3();

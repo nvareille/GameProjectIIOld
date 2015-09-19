@@ -6,8 +6,8 @@ using namespace StrawberryMilk;
 //constructors & destructors
 Vector2::Vector2()
 {
-	vx = 0;
-	vy = 0;
+	vx = 0.0f;
+	vy = 0.0f;
 }
 
 Vector2::Vector2(float _x, float _y)
@@ -22,10 +22,11 @@ Vector2::Vector2(const Vector2 & _v)
 	vy = _v.y();
 }
 
-Vector2::Vector2(const Vector2 && _v)
+Vector2::Vector2(Vector2 && _v)
 {
 	vx = _v.x();
 	vy = _v.y();
+	_v.update(0.0f, 0.0f);
 }
 
 void Vector2::operator=(const Vector2 & _v)
