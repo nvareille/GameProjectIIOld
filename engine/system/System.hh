@@ -13,6 +13,7 @@ namespace StrawberryMilk {
   public:
     System();
     ~System();
+    System(System const &&) = delete;
     System(System const &) = delete;
     void operator=(System const &) = delete;
 

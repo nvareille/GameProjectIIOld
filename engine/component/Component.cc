@@ -1,9 +1,9 @@
 #include "Component.hh"
 
-StrawberryMilk::Component::Component(unsigned long int IDComponent) : mIDComponent(IDComponent){ }
+StrawberryMilk::Component::Component(StrawberryMilk::Type::IDComponent IDComponent) : mIDComponent(IDComponent){ }
 
 StrawberryMilk::Component::~Component() { }
 
-unsigned long int StrawberryMilk::Component::getIDComponent() const {
+StrawberryMilk::Type::IDComponent StrawberryMilk::Component::getIDComponent() const {
   return mIDComponent;
 }
