@@ -1,6 +1,8 @@
 #include "Vector3.hh"
 #include <stdexcept>
 
+using namespace StrawberryMilk;
+
 //constructors & destructors
 Vector3::Vector3()
 {
@@ -35,22 +37,22 @@ Vector3::~Vector3()
 }
 
 //getters & setters
-float	Vector3::x() const
+float Vector3::x() const
 {
 	return (vx);
 }
 
-float	Vector3::y() const
+float Vector3::y() const
 {
 	return(vy);
 }
 
-float	Vector3::z() const
+float Vector3::z() const
 {
 	return(vz);
 }
 
-void	Vector3::setX(float _x)
+void Vector3::setX(float _x)
 {
 	vx = _x;
 }
@@ -70,6 +72,13 @@ void Vector3::update(float _x, float _y, float _z)
 	vx = _x;
 	vy = _y;
 	vz = _z;
+}
+
+void Vector3::translate(float _x, float _y, float _z)
+{
+	vx = vx + _x;
+	vy = vy + _y;
+	vz = vz + _z;
 }
 
 //operator overload

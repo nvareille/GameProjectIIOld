@@ -1,6 +1,8 @@
 #include "Vector2.hh"
 #include <stdexcept>
 
+using namespace StrawberryMilk;
+
 //constructors & destructors
 Vector2::Vector2()
 {
@@ -15,6 +17,12 @@ Vector2::Vector2(float _x, float _y)
 }
 
 Vector2::Vector2(const Vector2 & _v)
+{
+	vx = _v.x();
+	vy = _v.y();
+}
+
+Vector2::Vector2(const Vector2 && _v)
 {
 	vx = _v.x();
 	vy = _v.y();
@@ -55,6 +63,12 @@ void	Vector2::update(float _x, float _y)
 {
 	vx = _x;
 	vy = _y;
+}
+
+void	Vector2::translate(float _x, float _y)
+{
+	vx = vx + _x;
+	vy = vy + _y;
 }
 
 //operator overload
