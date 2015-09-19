@@ -4,9 +4,9 @@ namespace StrawberryMilk
 {
 	class Vector2
 	{
-	protected:
-		float vx;
-		float vy;
+	public:
+		float x;
+		float y;
 	private:
 		Vector2(Vector2 &&);
 	public:
@@ -18,8 +18,6 @@ namespace StrawberryMilk
 		void operator=(const Vector2 &);
 
 		/*	getters & setters */
-		float	x() const;
-		float	y() const;
 		void	setX(float);
 		void	setY(float);
 		void	update(float, float);

@@ -6,33 +6,33 @@ using namespace StrawberryMilk;
 //constructors & destructors
 Vector2::Vector2()
 {
-	vx = 0.0f;
-	vy = 0.0f;
+	x = 0.0f;
+	y = 0.0f;
 }
 
 Vector2::Vector2(float _x, float _y)
 {
-	vx = _x;
-	vy = _y;
+	x = _x;
+	y = _y;
 }
 
 Vector2::Vector2(const Vector2 & _v)
 {
-	vx = _v.x();
-	vy = _v.y();
+	x = _v.x;
+	y = _v.y;
 }
 
 Vector2::Vector2(Vector2 && _v)
 {
-	vx = _v.x();
-	vy = _v.y();
+	x = _v.x;
+	y = _v.y;
 	_v.update(0.0f, 0.0f);
 }
 
 void Vector2::operator=(const Vector2 & _v)
 {
-	vx = _v.x();
-	vy = _v.y();
+	x = _v.x;
+	y = _v.y;
 }
 
 Vector2::~Vector2()
@@ -40,61 +40,52 @@ Vector2::~Vector2()
 }
 
 //getters & setters
-float	Vector2::x() const
-{
-	return (vx);
-}
-
-float	Vector2::y() const
-{
-	return(vy);
-}
 
 void	Vector2::setX(float _x)
 {
-	vx = _x;
+	x = _x;
 }
 
 void	Vector2::setY(float _y)
 {
-	vy = _y;
+	y = _y;
 }
 
 void	Vector2::update(float _x, float _y)
 {
-	vx = _x;
-	vy = _y;
+	x = _x;
+	y = _y;
 }
 
 void	Vector2::translate(float _x, float _y)
 {
-	vx = vx + _x;
-	vy = vy + _y;
+	x = x + _x;
+	y = y + _y;
 }
 
 //operator overload
 void Vector2::operator-(const Vector2 & _v)
 {
-	vx = vx - _v.x();
-	vy = vy - _v.y();
+	x = x - _v.x;
+	y = y - _v.y;
 }
 
 void Vector2::operator+(const Vector2 & _v)
 {
-	vx = vx + _v.x();
-	vy = vy + _v.y();
+	x = x + _v.x;
+	y = y + _v.y;
 }
 
 void Vector2::operator*(float _value)
 {
-	vx = vx * _value;
-	vy = vy * _value;
+	x = x * _value;
+	y = y * _value;
 }
 
 void Vector2::operator/(float _value)
 {
 	if (_value == 0.0f)
 		throw std::invalid_argument("Vector2: Operator/: Zero divisor given as parameter");
-	vx = vx / _value;
-	vy = vy / _value;
+	x = x / _value;
+	y = y / _value;
 }

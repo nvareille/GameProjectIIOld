@@ -4,10 +4,10 @@ namespace StrawberryMilk
 {
 	class Vector3
 	{
-	protected:
-		float vx;
-		float vy;
-		float vz;
+	public:
+		float x;
+		float y;
+		float z;
 	private:
 		Vector3(Vector3 &&);
 	public:
@@ -19,9 +19,6 @@ namespace StrawberryMilk
 		void operator=(const Vector3 &);
 
 		/*	getters & setters */
-		float	x() const;
-		float	y() const;
-		float	z() const;
 		void	setX(float);
 		void	setY(float);
 		void	setZ(float);
