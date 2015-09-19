@@ -10,7 +10,7 @@
     Vector2();
 	Vector2(float, float);
     virtual ~Vector2();
-    Vector2(const Vector2 &)
+	Vector2(const Vector2 &);
 	void operator=(const Vector2 &);
 
 	/*	getters & setters */

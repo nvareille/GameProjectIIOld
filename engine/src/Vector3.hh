@@ -11,7 +11,7 @@
     Vector3();
 	Vector3(float, float, float);
     virtual ~Vector3();
-    Vector3(const Vector3 &)
+	Vector3(const Vector3 &);
 	void operator=(const Vector3 &);
 
 	/*	getters & setters */
