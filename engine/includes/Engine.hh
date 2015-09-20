@@ -1,11 +1,8 @@
 #pragma once
 
-#include <string>
-#include <unordered_map>
 #include "Singleton.hh"
 #include "Log.hh"
-#include "../system/System.hh"
-
+#include "SystemManager.hh"
 
 namespace StrawberryMilk {
 
@@ -19,14 +16,16 @@ namespace StrawberryMilk {
     void operator=(Engine const &) = delete;
 
   public:
+    System &getSystem(std::string const &) const;
+
+  public:
     void init();
     void run();
     void stop();
 
   private:
 //    StrawberryMilk::Singleton<StrawberryMilk::Log> mLog;
-    StrawberryMilk::Singleton<int> mLog;
-    std::unordered_map<std::string, StrawberryMilk::System *> mSystem;
+    SystemManager mSystem;
     bool mContinue;
   };
 }
