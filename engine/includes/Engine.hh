@@ -3,6 +3,8 @@
 #include "Singleton.hh"
 #include "Log.hh"
 #include "SystemManager.hh"
+#include "EntityManager.hh"
+#include "ComponentManager.hh"
 
 namespace StrawberryMilk {
 
@@ -25,7 +27,9 @@ namespace StrawberryMilk {
 
   private:
 //    StrawberryMilk::Singleton<StrawberryMilk::Log> mLog;
-    SystemManager mSystem;
+    StrawberryMilk::SystemManager mSystem;
+    StrawberryMilk::Entity::EntityManager mEntity;
+    StrawberryMilk::Component::ComponentManager mComponent;
     bool mContinue;
   };
 }

@@ -1,4 +1,4 @@
-#include "../includes/Log.hh"
+#include "../../includes/Log.hh"
 
 StrawberryMilk::Log::Log() {}
 StrawberryMilk::Log::~Log() {}

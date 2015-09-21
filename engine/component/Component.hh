@@ -2,33 +2,36 @@
 
 namespace StrawberryMilk {
 
-  namespace Type {
+  namespace Component {
 
-    typedef unsigned long int IDComponent;
-  };
+    namespace Type {
 
-  class Component {
+      typedef unsigned long int IDComponent;
+    };
 
-    // ctor dtor
-  public:
-    Component(StrawberryMilk::Type::IDComponent);
-    ~Component();
-    Component(Component const &&) = delete;
-    Component(Component const &) = delete;
-    void operator=(Component const &) = delete;
+    class Component {
 
-    // system loop
-  public:
-    virtual void init() = 0;
-    virtual void update() = 0;
-    virtual void destroy() = 0;
+      // ctor dtor
+    public:
+      Component(StrawberryMilk::Component::Type::IDComponent);
+      ~Component();
+      Component(Component const &&) = delete;
+      Component(Component const &) = delete;
+      void operator=(Component const &) = delete;
 
-    // getter
-  public:
-    StrawberryMilk::Type::IDComponent getIDComponent() const;
+      // system loop
+    public:
+      virtual void init() = 0;
+      virtual void update() = 0;
+      virtual void destroy() = 0;
 
-  private:
-    // MUST BE A UNIQUE ID
-    StrawberryMilk::Type::IDComponent mIDComponent;
+      // getter
+    public:
+      StrawberryMilk::Component::Type::IDComponent getIDComponent() const;
+
+    private:
+      // MUST BE A UNIQUE ID
+      StrawberryMilk::Component::Type::IDComponent mIDComponent;
+    };
   };
 };

@@ -34,7 +34,7 @@ namespace StrawberryMilk {
       std::vector<
         std::tuple<
           StrawberryMilk::Entity::EntityManager::EntityState,
-          std::list<StrawberryMilk::Component *>
+          std::list<StrawberryMilk::Component::Component *>
           >
         > mEntity;
         ID mCurrentId;

@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <utility>
-#include "../includes/Engine.hh"
-#include "../system/System.hh"
+#include "../../includes/Engine.hh"
+#include "../../system/System.hh"
 
 StrawberryMilk::Engine::Engine() : mContinue(true) {}
 StrawberryMilk::Engine::~Engine() {}
