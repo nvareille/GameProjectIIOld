@@ -2,12 +2,18 @@
 
 namespace StrawberryMilk {
 
+  namespace Type {
+
+    typedef unsigned long int IDComponent;
+  };
+
   class Component {
 
     // ctor dtor
   public:
-    Component(unsigned long int);
+    Component(StrawberryMilk::Type::IDComponent);
     ~Component();
+    Component(Component const &&) = delete;
     Component(Component const &) = delete;
     void operator=(Component const &) = delete;
 
@@ -19,10 +25,10 @@ namespace StrawberryMilk {
 
     // getter
   public:
-    unsigned long int getIDComponent() const;
+    StrawberryMilk::Type::IDComponent getIDComponent() const;
 
   private:
     // MUST BE A UNIQUE ID
-    unsigned long int mIDComponent;
+    StrawberryMilk::Type::IDComponent mIDComponent;
   };
 };
