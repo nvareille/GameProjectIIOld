@@ -3,12 +3,14 @@
 #define STRAWBERRYMILKVECTOR3_HH_
 
 #include <stdexcept>
+#include "json/json.h"
+#include "IJsonSerializable.hh"
 
 namespace StrawberryMilk
 {
 	namespace Math
 	{
-		class Vector3
+		class Vector3 : public IJsonSerializable
 		{
 		public:
 			float x;
@@ -32,6 +34,22 @@ namespace StrawberryMilk
 			void operator+=(const Vector3 &);
 			void operator*=(float);
 			void operator/=(float); /* Throw a standard exception(invalid argument) */
+
+
+			/* Serialization*/
+			virtual void Serialize(Json::Value& root)
+			{
+				root["vector3X"] = x;
+				root["vector3Y"] = y;
+				root["vector3Z"] = z;
+			}
+
+			virtual void Deserialize(Json::Value& root)
+			{
+				x = root.get("vector3X", 0.0f).asFloat();
+				y = root.get("vector3Y", 0.0f).asFloat();
+				z = root.get("vector3Z", 0.0f).asFloat();
+			}
 		};
 
 		/* operator overload for epression v3 * v3*/
