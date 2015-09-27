@@ -22,10 +22,26 @@ bool JsonSerializer::Deserialize(IJsonSerializable* pObj, std::string& input)
 	Json::Value deserializeRoot;
 	Json::Reader reader;
 
-	if (!reader.parse(input, deserializeRoot))
+	if (!reader.parse(input, deserializeRoot, false))
 		return false;
 
 	pObj->Deserialize(deserializeRoot);
+
+	return true;
+}
+
+bool JsonSerializer::DeserializeComponent(IJsonSerializable* pObj, std::string& input, std::string& component)
+{
+	if (pObj == NULL)
+		return false;
+
+	Json::Value deserializeRoot;
+	Json::Reader reader;
+
+	if (!reader.parse(input, deserializeRoot, false))
+		return false;
+
+	pObj->Deserialize(deserializeRoot[component]);
 
 	return true;
 }

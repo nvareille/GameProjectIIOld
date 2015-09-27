@@ -39,16 +39,16 @@ namespace StrawberryMilk
 			/* Serialization*/
 			virtual void Serialize(Json::Value& root)
 			{
-				root["vector3X"] = x;
-				root["vector3Y"] = y;
-				root["vector3Z"] = z;
+				root["Vector3"]["vector3X"] = x;
+				root["Vector3"]["vector3Y"] = y;
+				root["Vector3"]["vector3Z"] = z;
 			}
 
 			virtual void Deserialize(Json::Value& root)
 			{
-				x = root.get("vector3X", 0.0f).asFloat();
-				y = root.get("vector3Y", 0.0f).asFloat();
-				z = root.get("vector3Z", 0.0f).asFloat();
+				x = root["Vector3"].get("vector3X", 0.0f).asFloat();
+				y = root["Vector3"].get("vector3Y", 0.0f).asFloat();
+				z = root["Vector3"].get("vector3Z", 0.0f).asFloat();
 			}
 		};
 
