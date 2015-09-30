@@ -1,5 +1,6 @@
 #include "Vector2.hh"
-#include <stdexcept>
+
+using namespace StrawberryMilk::Math;
 
 using namespace StrawberryMilk::Math;
 
@@ -54,25 +55,25 @@ void	Vector2::translate(float _x, float _y)
 }
 
 //operator overload
-void Vector2::operator-(const Vector2 & _v)
+void Vector2::operator-=(const Vector2 & _v)
 {
 	x = x - _v.x;
 	y = y - _v.y;
 }
 
-void Vector2::operator+(const Vector2 & _v)
+void Vector2::operator+=(const Vector2 & _v)
 {
 	x = x + _v.x;
 	y = y + _v.y;
 }
 
-void Vector2::operator*(float _value)
+void Vector2::operator*=(float _value)
 {
 	x = x * _value;
 	y = y * _value;
 }
 
-void Vector2::operator/(float _value)
+void Vector2::operator/=(float _value)
 {
 	if (_value == 0.0f)
 		throw std::invalid_argument("Vector2: Operator/: Zero divisor given as parameter");

@@ -27,3 +27,6 @@ void StrawberryMilk::Engine::run() {
 
 void StrawberryMilk::Engine::init() {
 }
+
+void StrawberryMilk::Engine::loadScene(std::string const &path) {
+}

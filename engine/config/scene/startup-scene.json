@@ -1,0 +1,14 @@
+{
+  "System": [
+    {
+      "name": "test",
+      "dll": "test.dll"
+    }
+  ],
+  "Component": [
+    {
+      "name": "test",
+      "dll": "test.dll"
+    }
+  ]
+}

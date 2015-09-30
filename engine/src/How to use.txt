@@ -1,0 +1,13 @@
+#include "Vector3.hh"
+#include "JsonLoader.hh"
+
+
+
+std::string file = "test.json";
+JsonLoader jl(file);
+jl.LoadFile();
+jl.showContent();
+Vector3 v9;
+jl.loadObject(&v9);
+jl.setOutput("save.json");
+jl.saveObject(&v9, false);

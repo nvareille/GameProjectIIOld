@@ -15,15 +15,19 @@ namespace StrawberryMilk {
     ~Engine();
     Engine(Engine const &&) = delete;
     Engine(Engine const &) = delete;
-    void operator=(Engine const &) = delete;
+    Engine operator=(Engine const &) = delete;
 
   public:
     System &getSystem(std::string const &) const;
+
 
   public:
     void init();
     void run();
     void stop();
+
+  private:
+    void loadScene(std::string const &);
 
   private:
 //    StrawberryMilk::Singleton<StrawberryMilk::Log> mLog;

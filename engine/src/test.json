@@ -1,0 +1,14 @@
+{
+    "Vector3" : 
+    {
+        "vector3X" : 42.0,
+        "vector3Y" : 3.14159,
+        "vector3Z" : 10
+    },
+    "Vector2": 
+    {
+        "vector3X": 41.0,
+        "vector3Y": 3.1,
+        "vector3Z": 14
+    }
+ }

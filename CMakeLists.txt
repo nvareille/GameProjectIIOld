@@ -23,4 +23,14 @@ add_executable (
 	engine/includes/SystemManager.hh
 	engine/includes/EntityManager.hh
 	engine/includes/ComponentManager.hh
+
+	engine/lib/jsoncpp.cpp
+	engine/lib/JsonSerializer.cpp
+
+	engine/lib/IJsonSerializable.hh
+	engine/lib/JsonLoader.hh
+	engine/lib/JsonSerializer.hh
+
+	engine/lib/json/json.h
+	engine/lib/json/json-forwards.h
 )
