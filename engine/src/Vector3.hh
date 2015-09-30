@@ -6,22 +6,28 @@
 #include "json/json.h"
 #include "IJsonSerializable.hh"
 
+
 namespace StrawberryMilk
 {
 	namespace Math
 	{
+
 		class Vector3 : public IJsonSerializable
+
 		{
 		public:
 			float x;
 			float y;
 			float z;
+
+
 		public:
 			/*	constructors & destructors */
 			Vector3();
 			Vector3(float, float, float);
 			virtual ~Vector3();
 			Vector3(const Vector3 &);
+
 			Vector3(Vector3 &&);
 			void operator=(const Vector3 &);
 
@@ -69,3 +75,4 @@ namespace StrawberryMilk
 	};
 };
 #endif
+

@@ -2,6 +2,8 @@
 
 using namespace StrawberryMilk::Math;
 
+using namespace StrawberryMilk::Math;
+
 //constructors & destructors
 Vector3::Vector3()
 {
@@ -33,6 +35,7 @@ Vector3::Vector3(Vector3 && _v)
 }
 
 void Vector3::operator=(const Vector3 & _v)
+
 {
 	x = _v.x;
 	y = _v.y;
@@ -42,8 +45,6 @@ void Vector3::operator=(const Vector3 & _v)
 Vector3::~Vector3()
 {
 }
-
-//getters & setters
 
 void Vector3::update(float _x, float _y, float _z)
 {

@@ -2,6 +2,8 @@
 
 using namespace StrawberryMilk::Math;
 
+using namespace StrawberryMilk::Math;
+
 //constructors & destructors
 Vector2::Vector2()
 {

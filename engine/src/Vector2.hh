@@ -11,11 +11,14 @@ namespace StrawberryMilk
 {
 	namespace Math
 	{
+
 		class Vector2 : public IJsonSerializable
+
 		{
 		public:
 			float x;
 			float y;
+
 			
 		public:
 			/*	constructors & destructors */
@@ -23,6 +26,7 @@ namespace StrawberryMilk
 			Vector2(float, float);
 			virtual ~Vector2();
 			Vector2(const Vector2 &);
+
 			Vector2(Vector2 &&);
 			void operator=(const Vector2 &);
 
@@ -68,3 +72,4 @@ namespace StrawberryMilk
 };
 
 #endif
+
