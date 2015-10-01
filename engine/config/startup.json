@@ -1,0 +1,40 @@
+{
+  "configuration": {
+    "system": {
+      "path": "scene"
+    },
+    "component": {
+      "path": "component"
+    },
+    "log": "stdout"
+  },
+  "startup": {
+    "scene": "startup-scene.json"
+  },
+  "engine": {
+    "version": "0.1",
+    "name": "StrawberryMilk engine",
+    "author": [
+      {
+        "name": "Guillaume Tassery",
+        "role": "Tech lead",
+        "e-mail": "guillaumetassery@gmail.com"
+      },
+      {
+        "name": "Aurelien Jolly",
+        "role": "Game lead",
+        "e-mail": ""
+      },
+      {
+        "name": "Nicolas Vareille",
+        "role": "Producer",
+        "e-mail": ""
+      },
+      {
+        "name": "Enam",
+        "role": "Developer",
+        "e-mail": ""
+      }
+    ]
+  }
+}
