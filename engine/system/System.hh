@@ -25,7 +25,7 @@ namespace StrawberryMilk {
 
     // member function entity
   public:
-    virtual bool registerEntity(void *) = 0;
+    virtual bool registerEntity() = 0;
 
     // getter
   public:

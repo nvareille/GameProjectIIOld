@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\component\test\test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\component\test\test.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\component\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C510593C-464A-4943-9608-7DCBF4EF7BCE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{AA36C8AA-2BA9-4E95-A66A-CEBA806EDF75}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

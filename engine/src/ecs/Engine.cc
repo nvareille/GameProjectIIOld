@@ -13,7 +13,7 @@ void StrawberryMilk::Engine::stop() {
 
 void StrawberryMilk::Engine::run() {
 
-
+  std::cout << "lol" << std::endl;
   while (mContinue) {
 	  mSystem.updateAllSystem([](StrawberryMilk::System *system) {
       if (system->isActive()) {
@@ -34,7 +34,8 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
     while (!e.empty()) {
       std::pair<std::string, std::string> system = e.top();
       try {
-        mSystem.insertSystem(system.first, system.second);
+        std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
+        mSystem.insertSystem(system.first, path);
       } catch (...) {
 
       }
@@ -66,7 +67,6 @@ void StrawberryMilk::Engine::init() {
    jl.showContent();
    jl.loadObject(&scene);
    this->loadScene(scene);
-//   jl.showContent();
 }
 
 void StrawberryMilk::Engine::loadScene(std::string const &path) {
