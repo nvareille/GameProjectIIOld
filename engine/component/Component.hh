@@ -9,13 +9,14 @@ namespace StrawberryMilk {
       typedef unsigned long int IDComponent;
     };
 
-    class Component {
+    class __declspec(dllexport) Component {
 
       // ctor dtor
     public:
-      Component(StrawberryMilk::Component::Type::IDComponent);
-      ~Component();
-      Component(Component const &&) = delete;
+
+      Component(StrawberryMilk::Component::Type::IDComponent IDComponent): mIDComponent(IDComponent) {};
+      ~Component() {};
+      Component(Component &&) = delete;
       Component(Component const &) = delete;
       void operator=(Component const &) = delete;
 
@@ -27,7 +28,7 @@ namespace StrawberryMilk {
 
       // getter
     public:
-      StrawberryMilk::Component::Type::IDComponent getIDComponent() const;
+      inline StrawberryMilk::Component::Type::IDComponent getIDComponent() const { return mIDComponent; }
 
     private:
       // MUST BE A UNIQUE ID

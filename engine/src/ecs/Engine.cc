@@ -33,7 +33,11 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 
     while (!e.empty()) {
       std::pair<std::string, std::string> system = e.top();
-      mSystem.insertSystem(system.first, system.second);
+      try {
+        mSystem.insertSystem(system.first, system.second);
+      } catch (...) {
+
+      }
       e.pop();
     }
   }
@@ -42,17 +46,24 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 
     while (!e.empty()) {
       std::pair<std::string, std::string> component = e.top();
-      mComponent.loadComponent(component.first, component.second);
+      std::string path = "engine\\ressource\\component\\" + component.first + "\\" + component.second;
+      std::cout << path << std::endl;
+      try {
+        mComponent.loadComponent(component.first, path);
+      } catch (std::invalid_argument &a) {
+        std::cout << a.what() << std::endl;
+      }
       e.pop();
     }
   }
 }
 
 void StrawberryMilk::Engine::init() {
-   JsonLoader jl("./engine/config/scene/startup-scene.json");
+   JsonLoader jl("engine\\config\\scene\\startup-scene.json");
    StrawberryMilk::Engine::SceneLoader scene;
 
    jl.LoadFile();
+   jl.showContent();
    jl.loadObject(&scene);
    this->loadScene(scene);
 //   jl.showContent();

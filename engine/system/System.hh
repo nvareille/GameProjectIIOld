@@ -2,7 +2,7 @@
 
 namespace StrawberryMilk {
 
-  class System {
+  class __declspec(dllexport) System {
 
     enum class state {
       ACTIVE,
@@ -11,8 +11,8 @@ namespace StrawberryMilk {
 
     // ctor dtor
   public:
-    System();
-    ~System();
+    System() : mState(StrawberryMilk::System::state::ACTIVE), mRequirement(0) {};
+    ~System() { };
     System(System const &&) = delete;
     System(System const &) = delete;
     void operator=(System const &) = delete;
@@ -29,14 +29,14 @@ namespace StrawberryMilk {
 
     // getter
   public:
-    unsigned long getRequirement() const;
+    inline unsigned long getRequirement() const { return mRequirement; };
 
     // status function member
   public:
-    bool isActive() const;
-    bool isPause() const;
-    void setActive();
-    void setPause();
+    inline bool isActive() const { return mState == StrawberryMilk::System::state::ACTIVE;}
+    inline bool isPause() const { return mState == StrawberryMilk::System::state::PAUSE; };
+    inline void setActive() {   mState = StrawberryMilk::System::state::ACTIVE; };
+    inline void setPause() { mState = StrawberryMilk::System::state::PAUSE;};
 
   private:
     state mState;

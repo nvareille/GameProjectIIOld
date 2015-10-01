@@ -8,8 +8,11 @@ StrawberryMilk::Component::ComponentManager::~ComponentManager() {}
 void StrawberryMilk::Component::ComponentManager::loadComponent(std::string const &name, std::string const &path) {
 
   {
-    DLLLoader<Component *> tmp;
-    mComponent[name] = tmp;
+	  StrawberryMilk::DLLLoader<StrawberryMilk::Component::Component *> tmp;
+	  std::pair<std::string, StrawberryMilk::DLLLoader<StrawberryMilk::Component::Component *>>it;
+	  it.first = name;
+      it.second = tmp;
+      mComponent.insert(it);
   }
 
   mComponent[name].load(path);
@@ -31,5 +34,5 @@ void StrawberryMilk::Component::ComponentManager::createComponent(std::string co
     throw std::invalid_argument("Component was already found in the Component Manager");
   }
 
-  return it.second.call("create");
+  /*return */(*it).second.call("create");
 }
