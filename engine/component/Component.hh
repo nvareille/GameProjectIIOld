@@ -22,7 +22,7 @@ namespace StrawberryMilk {
 
       // system loop
     public:
-      virtual void init() = 0;
+      virtual void init(std::string const &) = 0;
       virtual void update() = 0;
       virtual void destroy() = 0;
 

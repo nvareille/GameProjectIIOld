@@ -29,6 +29,7 @@ namespace StrawberryMilk {
     public:
       void destroyEntity(ID);
       ID createEntity();
+      void addComponentOnEntity(ID, StrawberryMilk::Component::Component *);
 
     private:
       std::vector<

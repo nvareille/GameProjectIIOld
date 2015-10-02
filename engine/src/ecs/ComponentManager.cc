@@ -27,12 +27,12 @@ void StrawberryMilk::Component::ComponentManager::unloadComponent(std::string co
   // TODO: MUST CALL DLL UNLOADER
 }
 
-void StrawberryMilk::Component::ComponentManager::createComponent(std::string const &name) {
+StrawberryMilk::Component::Component *StrawberryMilk::Component::ComponentManager::createComponent(std::string const &name) {
   auto it = mComponent.find(name);
 
   if (it != mComponent.end()) {
     throw std::invalid_argument("Component was already found in the Component Manager");
   }
 
-  /*return */(*it).second.call("create");
+  return (*it).second.call("create");
 }

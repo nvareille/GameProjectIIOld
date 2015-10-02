@@ -25,23 +25,29 @@ namespace StrawberryMilk {
 
       void Deserialize(Json::Value &root) {
         for (auto e : root["System"]) {
-          std::cout << "ol" << std::endl;
           mSystem.push(std::make_pair(e["name"].asString(), e["dll"].asString()));
         }
         for (auto e : root["Component"]) {
           mComponent.push(std::make_pair(e["name"].asString(), e["dll"].asString()));
+        }
+        for (auto e : root["Scene"]) {
+          std::list<std::pair<std::string, std::string>> entity;
+          for (auto j: e) {
+            entity.push_back(std::make_pair(j["Component"].asString(), j["data path"].asString()));
+          }
+          mEntity.push(entity);
         }
       };
 
     public:
       inline std::stack<std::pair<std::string, std::string>> &getComponent() { return mComponent; };
       inline std::stack<std::pair<std::string, std::string>> &getSystem() { return mSystem; };
-      inline std::list<std::stack<std::string>> &getEntity() { return mEntity; }
+      inline std::stack<std::list<std::pair<std::string, std::string>>> &getEntity() { return mEntity; }
 
     private:
       std::stack<std::pair<std::string, std::string>> mComponent;
       std::stack<std::pair<std::string, std::string>> mSystem;
-      std::list<std::stack<std::string>> mEntity;
+      std::stack<std::list<std::pair<std::string, std::string>>> mEntity;
     };
 
   public:

@@ -19,7 +19,7 @@ void StrawberryMilk::Engine::run() {
 
   while (mContinue) {
     std::chrono::duration<double> delta = std::chrono::duration_cast<std::chrono::duration<double>>(time_end - time_begin);
-	std::cout << delta.count() << std::endl;
+
 	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
       if (system->isActive()) {
         system->update(delta);
@@ -58,6 +58,25 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
       std::cout << path << std::endl;
       try {
         mComponent.loadComponent(component.first, path);
+      } catch (std::invalid_argument &a) {
+        std::cout << a.what() << std::endl;
+      }
+      e.pop();
+    }
+  }
+  {
+    auto e = scene.getEntity();
+
+    while (!e.empty()) {
+      std::list<std::pair<std::string, std::string>> instr = e.top();
+
+      try {
+        StrawberryMilk::Entity::ID id_entity = mEntity.createEntity();
+        for (auto comp: instr) {
+          StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
+          mEntity.addComponentOnEntity(id_entity, component);
+        }
+
       } catch (std::invalid_argument &a) {
         std::cout << a.what() << std::endl;
       }

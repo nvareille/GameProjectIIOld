@@ -20,7 +20,7 @@ namespace StrawberryMilk {
 
       void loadComponent(std::string const &name, std::string const &path);
       void unloadComponent(std::string const &name);
-      void createComponent(std::string const &name);
+      StrawberryMilk::Component::Component *createComponent(std::string const &name);
 
     private:
       std::unordered_map<std::string, StrawberryMilk::DLLLoader<StrawberryMilk::Component::Component *>> mComponent;
