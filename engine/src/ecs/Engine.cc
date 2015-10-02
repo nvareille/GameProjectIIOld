@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <utility>
+#include <chrono>
 #include "../../includes/Engine.hh"
 #include "../../system/System.hh"
 #include "../../lib/JsonLoader.hh"
@@ -13,13 +14,19 @@ void StrawberryMilk::Engine::stop() {
 
 void StrawberryMilk::Engine::run() {
 
-  std::cout << "lol" << std::endl;
+  std::chrono::high_resolution_clock::time_point time_begin = std::chrono::high_resolution_clock::now();
+  std::chrono::high_resolution_clock::time_point time_end = std::chrono::high_resolution_clock::now();
+
   while (mContinue) {
-	  mSystem.updateAllSystem([](StrawberryMilk::System *system) {
+    std::chrono::duration<double> delta = std::chrono::duration_cast<std::chrono::duration<double>>(time_end - time_begin);
+	std::cout << delta.count() << std::endl;
+	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
       if (system->isActive()) {
-        system->update();
+        system->update(delta);
       }
 	  });
+    time_begin = time_end;
+    time_end = std::chrono::high_resolution_clock::now();
   }
 
   mSystem.updateAllSystem([](StrawberryMilk::System *system) {

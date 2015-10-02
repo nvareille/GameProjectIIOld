@@ -1,5 +1,8 @@
 #pragma once
 
+#include <ctime>
+#include <chrono>
+
 namespace StrawberryMilk {
 
   class __declspec(dllexport) System {
@@ -20,7 +23,7 @@ namespace StrawberryMilk {
     // system loop
   public:
     virtual void init() = 0;
-    virtual void update() = 0;
+    virtual void update(std::chrono::duration<double>) = 0;
     virtual void destroy() = 0;
 
     // member function entity
