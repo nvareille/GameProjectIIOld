@@ -6,9 +6,8 @@ include(CheckCXXCompilerFlag)
 set(ENABLE_CXX_EXCEPTIONS = 1)
 add_executable (
 	heroesSouls
-	engine/component/Component.cc
+
 	engine/component/Component.hh
-	engine/system/System.cc
 	engine/system/System.hh
 
 	engine/src/HeroesSouls.cc
@@ -43,9 +42,7 @@ set(ENABLE_CXX_EXCEPTIONS = 1)
 
 add_library(physic-System SHARED 
 
-	engine/system/System.cc
 	engine/system/System.hh
-	engine/Component/Component.cc
 	engine/Component/Component.hh
 
 	Sources/System/Physic/Physic.hh

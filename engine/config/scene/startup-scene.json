@@ -10,5 +10,13 @@
       "name": "test",
       "dll": "test.dll"
     }
+  ],
+  "Scene": [
+    {
+      "Main character": {
+        "Component": "test",
+        "data path": ""
+      }
+    }
   ]
 }

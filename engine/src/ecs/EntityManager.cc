@@ -25,3 +25,7 @@ StrawberryMilk::Entity::ID StrawberryMilk::Entity::EntityManager::createEntity()
     return mCurrentId++;
   }
 }
+
+void StrawberryMilk::Entity::EntityManager::addComponentOnEntity(ID id, StrawberryMilk::Component::Component * component) {
+  std::get<1>(mEntity[id]).push_back(component);
+}

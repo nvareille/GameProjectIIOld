@@ -1,10 +1,10 @@
 {
   "configuration": {
     "system": {
-      "path": "scene"
+      "path": "engine\\ressource\\system"
     },
     "component": {
-      "path": "component"
+      "path": "engine\\ressource\\component"
     },
     "log": "stdout"
   },

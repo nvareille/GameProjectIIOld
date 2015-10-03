@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <utility>
+#include <chrono>
 #include "../../includes/Engine.hh"
 #include "../../system/System.hh"
 #include "../../lib/JsonLoader.hh"
@@ -13,13 +14,19 @@ void StrawberryMilk::Engine::stop() {
 
 void StrawberryMilk::Engine::run() {
 
+  std::chrono::high_resolution_clock::time_point time_begin = std::chrono::high_resolution_clock::now();
+  std::chrono::high_resolution_clock::time_point time_end = std::chrono::high_resolution_clock::now();
 
   while (mContinue) {
-	  mSystem.updateAllSystem([](StrawberryMilk::System *system) {
+    std::chrono::duration<double> delta = std::chrono::duration_cast<std::chrono::duration<double>>(time_end - time_begin);
+
+	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
       if (system->isActive()) {
-        system->update();
+        system->update(delta);
       }
 	  });
+    time_begin = time_end;
+    time_end = std::chrono::high_resolution_clock::now();
   }
 
   mSystem.updateAllSystem([](StrawberryMilk::System *system) {
@@ -33,7 +40,12 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 
     while (!e.empty()) {
       std::pair<std::string, std::string> system = e.top();
-      mSystem.insertSystem(system.first, system.second);
+      try {
+        std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
+        mSystem.insertSystem(system.first, path);
+      } catch (...) {
+
+      }
       e.pop();
     }
   }
@@ -42,20 +54,45 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 
     while (!e.empty()) {
       std::pair<std::string, std::string> component = e.top();
-      mComponent.loadComponent(component.first, component.second);
+      std::string path = "engine\\ressource\\component\\" + component.first + "\\" + component.second;
+      std::cout << path << std::endl;
+      try {
+        mComponent.loadComponent(component.first, path);
+      } catch (std::invalid_argument &a) {
+        std::cout << a.what() << std::endl;
+      }
+      e.pop();
+    }
+  }
+  {
+    auto e = scene.getEntity();
+
+    while (!e.empty()) {
+      std::list<std::pair<std::string, std::string>> instr = e.top();
+
+      try {
+        StrawberryMilk::Entity::ID id_entity = mEntity.createEntity();
+        for (auto comp: instr) {
+          StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
+          mEntity.addComponentOnEntity(id_entity, component);
+        }
+
+      } catch (std::invalid_argument &a) {
+        std::cout << a.what() << std::endl;
+      }
       e.pop();
     }
   }
 }
 
 void StrawberryMilk::Engine::init() {
-   JsonLoader jl("./engine/config/scene/startup-scene.json");
+   JsonLoader jl("engine\\config\\scene\\startup-scene.json");
    StrawberryMilk::Engine::SceneLoader scene;
 
    jl.LoadFile();
+   jl.showContent();
    jl.loadObject(&scene);
    this->loadScene(scene);
-//   jl.showContent();
 }
 
 void StrawberryMilk::Engine::loadScene(std::string const &path) {
