@@ -30,6 +30,8 @@ void StrawberryMilk::Component::ComponentManager::createComponent(std::string co
   if (it != mComponent.end()) {
     throw std::invalid_argument("Component was already found in the Component Manager");
   }
+  
+  auto value = *it;
 
-  return it.second.call("create");
+  value.second.call("create");
 }

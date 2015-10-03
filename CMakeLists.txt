@@ -1,7 +1,8 @@
+cmake_minimum_required(VERSION 3.2)
+
 project(HeroesSouls)
 
 include(CheckCXXCompilerFlag)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(ENABLE_CXX_EXCEPTIONS = 1)
 add_executable (
 	heroesSouls
@@ -33,4 +34,21 @@ add_executable (
 
 	engine/lib/json/json.h
 	engine/lib/json/json-forwards.h
+)
+
+project(Physic-System)
+
+include(CheckCXXCompilerFlag)
+set(ENABLE_CXX_EXCEPTIONS = 1)
+
+add_library(physic-System SHARED 
+
+	engine/system/System.cc
+	engine/system/System.hh
+	engine/Component/Component.cc
+	engine/Component/Component.hh
+
+	Sources/System/Physic/Physic.hh
+	Sources/System/Physic/Physic.cc
+	Sources/Component/RigidBody/RigidBody.hh
 )
