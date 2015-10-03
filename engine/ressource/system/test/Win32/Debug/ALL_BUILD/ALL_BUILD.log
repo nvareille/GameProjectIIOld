@@ -1,0 +1,10 @@
+﻿Build started 01/10/2015 17:02:31.
+     1>Project "C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\ALL_BUILD.vcxproj" on node 2 (Build target(s)).
+     1>CustomBuild:
+         Building Custom Rule C:/Users/yiurule/Desktop/GameProjectII/GameProjectII/engine/ressource/system/test/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\CMakeFiles\generate.stamp is up-to-date.
+     1>Done Building Project "C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\ALL_BUILD.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.15

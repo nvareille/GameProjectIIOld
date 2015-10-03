@@ -1,0 +1,10 @@
+﻿Build started 01/10/2015 17:02:52.
+     1>Project "C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\ZERO_CHECK.vcxproj" on node 2 (Rebuild target(s)).
+     1>CustomBuild:
+         Checking Build System
+         CMake does not need to re-run because C:/Users/yiurule/Desktop/GameProjectII/GameProjectII/engine/ressource/system/test/CMakeFiles/generate.stamp is up-to-date.
+     1>Done Building Project "C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\ZERO_CHECK.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.11

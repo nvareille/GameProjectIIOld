@@ -1,0 +1,3 @@
+C:/Users/yiurule/Desktop/GameProjectII/GameProjectII/engine/ressource/component/test/CMakeFiles/ALL_BUILD.dir
+C:/Users/yiurule/Desktop/GameProjectII/GameProjectII/engine/ressource/component/test/CMakeFiles/ZERO_CHECK.dir
+C:/Users/yiurule/Desktop/GameProjectII/GameProjectII/engine/ressource/component/test/CMakeFiles/test.dir
