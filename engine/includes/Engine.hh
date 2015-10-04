@@ -9,6 +9,7 @@
 #include "../lib/json/json.h"
 #include "../lib/IJsonSerializable.hh"
 
+
 namespace StrawberryMilk {
 
   class Engine {
@@ -60,6 +61,8 @@ namespace StrawberryMilk {
   public:
     System &getSystem(std::string const &) const;
 
+  public:
+	StrawberryMilk::Component::Component *getComponentFromEntity(StrawberryMilk::Entity::ID, StrawberryMilk::Component::Type::IDComponent);
 
   public:
     void init();

@@ -3,8 +3,11 @@
 #include <ctime>
 #include <chrono>
 
+
 namespace StrawberryMilk {
 
+
+	class Engine;
   class __declspec(dllexport) System {
 
     enum class state {
@@ -23,7 +26,7 @@ namespace StrawberryMilk {
     // system loop
   public:
     virtual void init() = 0;
-    virtual void update(std::chrono::duration<double>) = 0;
+    virtual void update(Engine *, std::chrono::duration<double>) = 0;
     virtual void destroy() = 0;
 
     // member function entity
