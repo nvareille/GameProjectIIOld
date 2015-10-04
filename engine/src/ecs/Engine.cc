@@ -77,6 +77,13 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
           mEntity.addComponentOnEntity(id_entity, component);
         }
 
+        mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
+          if (system->isActive()) {
+            system->registerEntity(id_entity);
+          }
+    	  });
+
+
       } catch (std::invalid_argument &a) {
         std::cout << a.what() << std::endl;
       }
