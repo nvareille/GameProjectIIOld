@@ -44,8 +44,9 @@ add_library(physic-System SHARED
 
 	engine/system/System.hh
 	engine/Component/Component.hh
-	engine/src/misc/Vector2.hh
-	engine/src/misc/Vector2.cc
+	engine/src/Vector2.hh
+	engine/src/Vector2.cc
+	engine/src/Jsoncpp.cpp
 
 	Sources/System/Physic/Physic.hh
 	Sources/System/Physic/Physic.cc

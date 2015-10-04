@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../../engine/Component/Component.hh"
-#include "../../../engine/src/misc/Vector2.hh"
+#include "../../../engine/src/Vector2.hh"
 
 class RigidBody : public StrawberryMilk::Component::Component
 {
@@ -18,6 +18,12 @@ public:
 	virtual void update();
 	virtual void destroy();
 
+public:
+	float GetMass();
+	const StrawberryMilk::Math::Vector2 &GetForces();
+
 private:
 	StrawberryMilk::Math::Vector2 m_position;
+	StrawberryMilk::Math::Vector2 m_forces;
+	float m_mass;
 };
