@@ -22,7 +22,7 @@ void StrawberryMilk::Engine::run() {
 
 	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
       if (system->isActive()) {
-        system->update(delta);
+        system->update(this, delta);
       }
 	  });
     time_begin = time_end;
@@ -77,6 +77,13 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
           mEntity.addComponentOnEntity(id_entity, component);
         }
 
+        mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
+          if (system->isActive()) {
+            system->registerEntity(id_entity);
+          }
+    	  });
+
+
       } catch (std::invalid_argument &a) {
         std::cout << a.what() << std::endl;
       }
@@ -97,4 +104,8 @@ void StrawberryMilk::Engine::init() {
 
 void StrawberryMilk::Engine::loadScene(std::string const &path) {
 
+}
+
+StrawberryMilk::Component::Component *StrawberryMilk::Engine::getComponentFromEntity(StrawberryMilk::Entity::ID id, StrawberryMilk::Component::Type::IDComponent id_comp) {
+  return mEntity.getComponentFromEntity(id, id_comp);
 }

@@ -27,5 +27,20 @@ StrawberryMilk::Entity::ID StrawberryMilk::Entity::EntityManager::createEntity()
 }
 
 void StrawberryMilk::Entity::EntityManager::addComponentOnEntity(ID id, StrawberryMilk::Component::Component * component) {
-  std::get<1>(mEntity[id]).push_back(component);
+  std::get<1>(mEntity.at(id)).push_back(component);
+}
+
+StrawberryMilk::Component::Component *StrawberryMilk::Entity::EntityManager::getComponentFromEntity(ID id, StrawberryMilk::Component::Type::IDComponent id_comp) {
+
+  std::tuple<StrawberryMilk::Entity::EntityManager::EntityState, std::list<StrawberryMilk::Component::Component *>> entity = mEntity.at(id);
+
+  auto it = std::find_if(std::get<1>(entity).begin(), std::get<1>(entity).end(), [&](StrawberryMilk::Component::Component const *component) {
+    return component->getIDComponent() == id_comp;
+  });
+
+  if (it == std::get<1>(entity).end()) {
+    throw std::invalid_argument("Component not found");
+  }
+
+  return *it;
 }
