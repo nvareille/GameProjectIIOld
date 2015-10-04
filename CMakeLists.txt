@@ -44,8 +44,11 @@ add_library(physic-System SHARED
 
 	engine/system/System.hh
 	engine/Component/Component.hh
+	engine/src/misc/Vector2.hh
+	engine/src/misc/Vector2.cc
 
 	Sources/System/Physic/Physic.hh
 	Sources/System/Physic/Physic.cc
 	Sources/Component/RigidBody/RigidBody.hh
+	Sources/Component/RigidBody/RigidBody.cc
 )

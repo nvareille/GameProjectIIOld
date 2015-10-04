@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../../engine/Component/Component.hh"
+#include "../../../engine/src/misc/Vector2.hh"
 
 class RigidBody : public StrawberryMilk::Component::Component
 {
@@ -13,7 +14,10 @@ public:
 
 	// system loop
 public:
-	virtual void init();
+	virtual void init(std::string const &);
 	virtual void update();
 	virtual void destroy();
+
+private:
+	StrawberryMilk::Math::Vector2 m_position;
 };

@@ -28,6 +28,10 @@ namespace StrawberryMilk
 			void operator+(const Vector2 &);
 			void operator*(float);
 			void operator/(float); /* Throw a standard exception(invalid argument) */
+		
+			void operator-=(const Vector2 &);
 		};
+
+		
 	}
 };

@@ -1,26 +1,29 @@
 #include "Physic.hh"
 
-PhysicSystem::PhysicSystem()
+namespace HeroesSoul
 {
-}
+	PhysicSystem::PhysicSystem()
+	{
+	}
 
-PhysicSystem::~PhysicSystem()
-{
-}
+	PhysicSystem::~PhysicSystem()
+	{
+	}
 
-void PhysicSystem::init()
-{
-}
+	void PhysicSystem::init()
+	{
+	}
 
-void PhysicSystem::update()
-{
-}
+	void PhysicSystem::update()
+	{
+	}
 
-void PhysicSystem::destroy()
-{
-}
+	void PhysicSystem::destroy()
+	{
+	}
 
-bool PhysicSystem::registerEntity(void *)
-{
-	return (true);
-}
+	bool PhysicSystem::registerEntity(void *)
+	{
+		return (true);
+	}
+};
