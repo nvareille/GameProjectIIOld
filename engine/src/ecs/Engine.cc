@@ -105,7 +105,3 @@ void StrawberryMilk::Engine::init() {
 void StrawberryMilk::Engine::loadScene(std::string const &path) {
 
 }
-
-StrawberryMilk::Component::Component *StrawberryMilk::Engine::getComponentFromEntity(StrawberryMilk::Entity::ID id, StrawberryMilk::Component::Type::IDComponent id_comp) {
-  return mEntity.getComponentFromEntity(id, id_comp);
-}

@@ -62,7 +62,10 @@ namespace StrawberryMilk {
     System &getSystem(std::string const &) const;
 
   public:
-	StrawberryMilk::Component::Component *getComponentFromEntity(StrawberryMilk::Entity::ID, StrawberryMilk::Component::Type::IDComponent);
+    template <class T>
+	   T *getComponentFromEntity(StrawberryMilk::Entity::ID id) {
+       return mEntity.<T>getComponentFromEntity(id);
+     };
 
   public:
     void init();
