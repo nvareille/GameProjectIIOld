@@ -1,5 +1,7 @@
 #pragma once
 
+#include <list>
+
 #include "../../../engine/System/System.hh"
 
 namespace HeroesSoul
@@ -17,11 +19,14 @@ namespace HeroesSoul
 		// system loop
 	public:
 		virtual void init();
-		virtual void update();
+		virtual void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
 		virtual void destroy();
 
 		// member function entity
 	public:
-		virtual bool registerEntity(void *);
+		virtual bool registerEntity(StrawberryMilk::Entity::ID);
+
+	private:
+		std::list<StrawberryMilk::Entity::ID> m_entities;
 	};
 };

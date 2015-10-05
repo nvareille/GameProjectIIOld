@@ -31,6 +31,7 @@ namespace StrawberryMilk {
       ID createEntity();
       void addComponentOnEntity(ID, StrawberryMilk::Component::Component *);
       StrawberryMilk::Component::Component *getComponentFromEntity(StrawberryMilk::Entity::ID, StrawberryMilk::Component::Type::IDComponent);
+
     private:
       std::vector<
         std::tuple<

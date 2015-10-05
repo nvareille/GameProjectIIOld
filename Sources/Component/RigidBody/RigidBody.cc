@@ -15,7 +15,6 @@ void RigidBody::init(std::string const &)
 
 void RigidBody::update()
 {
-
 }
 
 void RigidBody::destroy()

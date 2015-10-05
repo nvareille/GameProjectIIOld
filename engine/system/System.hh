@@ -3,6 +3,7 @@
 #include <ctime>
 #include <chrono>
 
+#include "../includes/EntityManager.hh"
 #include "../component/Component.hh"
 
 namespace StrawberryMilk {
@@ -32,7 +33,7 @@ namespace StrawberryMilk {
 
     // member function entity
   public:
-    virtual bool registerEntity(StrawberryMilk::Component::Type::IDComponent) = 0;
+    virtual bool registerEntity(StrawberryMilk::Entity::ID) = 0;
 
     // getter
   public:

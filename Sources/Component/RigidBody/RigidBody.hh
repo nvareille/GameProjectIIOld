@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../engine/Component/Component.hh"
+#include "../../Component/Transform/Transform.hh"
 #include "../../../engine/src/Vector2.hh"
 
 class RigidBody : public StrawberryMilk::Component::Component
@@ -26,4 +26,5 @@ private:
 	StrawberryMilk::Math::Vector2 m_position;
 	StrawberryMilk::Math::Vector2 m_forces;
 	float m_mass;
+	bool m_isCircle;
 };
