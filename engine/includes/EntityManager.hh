@@ -38,12 +38,14 @@ namespace StrawberryMilk {
         for (StrawberryMilk::Component::Component *tmp : std::get<1>(entity)) {
           try {
             component = std::dynamic_cast<T>(tmp);
-            return component;
+            if (component != nullptr) {
+              return component;              
+            }
           } catch (...) {}
         }
 
         throw std::invalid_argument("Component not found");
-        return  nullptr; // WARNING ERROR 
+        return  nullptr; // WARNING ERROR
       }
     private:
       std::vector<
