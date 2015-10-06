@@ -1,16 +1,14 @@
 #pragma once
 
 #include <stdexcept>
-#include "IJsonSerializable.hh"
 #include "json/json.h"
-
+//#include "IJsonSerializable.hh"
 
 namespace StrawberryMilk
 {
 	namespace Math
 	{
-
-		class Vector2 : public IJsonSerializable
+		class Vector2// : public IJsonSerializable
 		{
 		public:
 			float x;

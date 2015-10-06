@@ -40,6 +40,10 @@ project(Physic-System)
 include(CheckCXXCompilerFlag)
 set(ENABLE_CXX_EXCEPTIONS = 1)
 
+include_directories(
+	engine/src
+	)
+
 add_library(physic-System SHARED 
 
 	engine/system/System.hh

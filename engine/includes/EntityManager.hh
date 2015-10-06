@@ -30,7 +30,24 @@ namespace StrawberryMilk {
       void destroyEntity(ID);
       ID createEntity();
       void addComponentOnEntity(ID, StrawberryMilk::Component::Component *);
-      StrawberryMilk::Component::Component *getComponentFromEntity(StrawberryMilk::Entity::ID, StrawberryMilk::Component::Type::IDComponent);
+
+      template <class T>
+      T *getComponentFromEntity(StrawberryMilk::Entity::ID id) {
+
+        std::tuple<StrawberryMilk::Entity::EntityManager::EntityState, std::list<StrawberryMilk::Component::Component *>> entity = mEntity.at(id);
+        T *component;
+        for (StrawberryMilk::Component::Component *tmp : std::get<1>(entity)) {
+          try {
+            component = dynamic_cast<T *>(tmp);
+            if (component != nullptr) {
+              return component;              
+            }
+          } catch (...) {}
+        }
+
+        throw std::invalid_argument("Component not found");
+        return  nullptr; // WARNING ERROR
+      }
 
     private:
       std::vector<

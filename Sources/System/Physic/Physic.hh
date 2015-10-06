@@ -27,6 +27,12 @@ namespace HeroesSoul
 		virtual bool registerEntity(StrawberryMilk::Entity::ID);
 
 	private:
+		void CompareEntities(StrawberryMilk::Entity::ID, StrawberryMilk::Entity::ID, StrawberryMilk::Engine *);
+		bool CompareRects();
+		bool CompareCircles();
+		bool CompareRectCircle();
+
+	private:
 		std::list<StrawberryMilk::Entity::ID> m_entities;
 	};
 };
