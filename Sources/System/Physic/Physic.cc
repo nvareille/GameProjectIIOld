@@ -55,6 +55,8 @@ namespace HeroesSoul
 
 	bool PhysicSystem::registerEntity(StrawberryMilk::Entity::ID entity)
 	{
+		printf("ADD\n");
+
 		m_entities.push_back(entity);
 		return (true);
 	}

@@ -66,6 +66,10 @@ namespace StrawberryMilk {
 	   T *getComponentFromEntity(StrawberryMilk::Entity::ID id) {
        return mEntity.getComponentFromEntity<T>(id);
      };
+	   std::list<StrawberryMilk::Component::Component *> &GetComponents(StrawberryMilk::Entity::ID id)
+	   {
+		   return (mEntity.GetComponents(id));
+	   }
 
   public:
     void init();

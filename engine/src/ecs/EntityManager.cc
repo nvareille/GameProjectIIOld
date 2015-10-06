@@ -29,3 +29,8 @@ StrawberryMilk::Entity::ID StrawberryMilk::Entity::EntityManager::createEntity()
 void StrawberryMilk::Entity::EntityManager::addComponentOnEntity(ID id, StrawberryMilk::Component::Component * component) {
   std::get<1>(mEntity.at(id)).push_back(component);
 }
+
+std::list<StrawberryMilk::Component::Component *> &StrawberryMilk::Entity::EntityManager::GetComponents(ID id)
+{
+	return (std::get<1>(mEntity.at(id)));
+}

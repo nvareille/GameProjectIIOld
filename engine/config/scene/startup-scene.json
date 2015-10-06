@@ -3,19 +3,23 @@
     {
       "name": "Physic",
       "dll": "physic-System.dll"
+    },
+	{
+      "name": "Update",
+      "dll": "update-System.dll"
     }
   ],
   "Component": [
     {
-      "name": "test",
-      "dll": "test.dll"
+      "name": "Transform",
+      "dll": "Transform-Component.dll"
     }
   ],
   "Scene": [
 	{
       "Main character":
 	  {
-        "Component": "test",
+        "Component": "Transform",
         "data path": ""
       }
     }

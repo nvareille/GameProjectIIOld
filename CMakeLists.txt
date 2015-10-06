@@ -60,6 +60,29 @@ add_library(physic-System SHARED
 	Sources/Component/Transform/Transform.hh
 )
 
+project(Update-System)
+
+include(CheckCXXCompilerFlag)
+set(ENABLE_CXX_EXCEPTIONS = 1)
+
+include_directories(
+	engine/src
+	)
+
+add_library(update-System SHARED 
+
+	engine/system/System.hh
+	engine/Component/Component.hh
+	engine/src/Vector2.hh
+	engine/src/Vector2.cc
+	engine/src/Jsoncpp.cpp
+	engine/src/ecs/EntityManager.cc
+	engine/includes/Engine.hh
+
+	Sources/System/Update/Update.hh
+	Sources/System/Update/Update.cc
+)
+
 project(Transform-Component)
 
 include(CheckCXXCompilerFlag)
