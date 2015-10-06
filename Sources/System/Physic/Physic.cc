@@ -23,6 +23,7 @@ namespace HeroesSoul
 
 	void PhysicSystem::init()
 	{
+
 		std::cout << "Init" << std::endl;
 	}
 
@@ -49,6 +50,7 @@ namespace HeroesSoul
 
 	void PhysicSystem::destroy()
 	{
+
 	}
 
 	bool PhysicSystem::registerEntity(StrawberryMilk::Entity::ID entity)
