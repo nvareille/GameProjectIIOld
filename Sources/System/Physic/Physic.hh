@@ -3,6 +3,7 @@
 #include <list>
 
 #include "../../../engine/System/System.hh"
+#include "../../Component/RigidBody/RigidBody.hh"
 
 namespace HeroesSoul
 {
@@ -28,11 +29,23 @@ namespace HeroesSoul
 
 	private:
 		void CompareEntities(StrawberryMilk::Entity::ID, StrawberryMilk::Entity::ID, StrawberryMilk::Engine *);
-		bool CompareRects();
-		bool CompareCircles();
-		bool CompareRectCircle();
+		bool CompareRects(RigidBody **, Transform **);
+		bool CompareCircles(RigidBody **, Transform **);
+		bool CompareRectCircle(RigidBody **, Transform **);
+		void SwapContainers(void *);
 
 	private:
 		std::list<StrawberryMilk::Entity::ID> m_entities;
+	};
+
+	class Square
+	{
+	public:
+		Square(RigidBody *, Transform *);
+		bool ResolveCollision(const Square &square2);
+
+	public:
+		StrawberryMilk::Math::Vector2 min;
+		StrawberryMilk::Math::Vector2 max;
 	};
 };

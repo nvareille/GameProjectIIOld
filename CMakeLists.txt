@@ -59,3 +59,18 @@ add_library(physic-System SHARED
 	Sources/Component/RigidBody/RigidBody.cc
 	Sources/Component/Transform/Transform.hh
 )
+
+project(Transform-Component)
+
+include(CheckCXXCompilerFlag)
+set(ENABLE_CXX_EXCEPTIONS = 1)
+
+add_library(Transform-Component SHARED
+	engine/Component/Component.hh
+	engine/src/Vector2.hh
+	engine/src/Vector2.cc
+	engine/src/Jsoncpp.cpp
+	engine/includes/Engine.hh
+
+	Sources/Component/Transform/Transform.hh
+)
