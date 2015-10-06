@@ -1,5 +1,4 @@
 #include "Physic.hh"
-#include "../../../engine/includes/Engine.hh"
 
 namespace HeroesSoul
 {
@@ -55,7 +54,7 @@ namespace HeroesSoul
 
 	bool PhysicSystem::registerEntity(StrawberryMilk::Entity::ID entity)
 	{
-		printf("ADD\n");
+		std::cout << "ADDED TO PHYSIC SYSTEM" << std::endl;
 
 		m_entities.push_back(entity);
 		return (true);

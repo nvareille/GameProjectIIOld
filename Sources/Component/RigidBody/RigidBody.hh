@@ -20,9 +20,9 @@ public:
 
 public:
 	float GetMass();
-	const StrawberryMilk::Math::Vector2 &GetDimensions();
-	const StrawberryMilk::Math::Vector2 &GetForces();
-	bool IsCircle();
+	const StrawberryMilk::Math::Vector2 &GetDimensions() { return (m_dimensions); };
+	const StrawberryMilk::Math::Vector2 &GetForces() { return (m_forces); };
+	bool IsCircle() { return(m_isCircle); };
 
 private:
 	StrawberryMilk::Math::Vector2 m_dimensions;

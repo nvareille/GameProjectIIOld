@@ -4,7 +4,7 @@ extern "C"
 {
 	__declspec(dllexport) StrawberryMilk::Component::Component *create(void)
 	{
-		return dynamic_cast<StrawberryMilk::Component::Component *>(new Transform(1));
+		return dynamic_cast<StrawberryMilk::Component::Component *>(new Transform(0));
 	}
 }
 
@@ -14,21 +14,19 @@ Transform::Transform() : Component(0)
 
 Transform::Transform(StrawberryMilk::Component::Type::IDComponent id) : Component(id)
 {
-	printf("test\n");
 }
 
 Transform::~Transform()
 {
 }
 
-void Transform::init(std::string const &)
+void Transform::init(std::string const &str)
 {
-	printf("test\n");
+	printf("%s\n", str);
 }
 
 void Transform::update()
 {
-	printf("test\n");
 }
 
 void Transform::destroy()

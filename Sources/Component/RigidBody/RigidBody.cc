@@ -1,5 +1,13 @@
 #include "RigidBody.hh"
 
+extern "C"
+{
+	__declspec(dllexport) StrawberryMilk::Component::Component *create(void)
+	{
+		return dynamic_cast<StrawberryMilk::Component::Component *>(new RigidBody(0));
+	}
+}
+
 RigidBody::RigidBody(StrawberryMilk::Component::Type::IDComponent id) : Component(id)
 {
 }
@@ -20,24 +28,4 @@ void RigidBody::update()
 void RigidBody::destroy()
 {
 
-}
-
-float RigidBody::GetMass()
-{
-	return (m_mass);
-}
-
-const StrawberryMilk::Math::Vector2 &RigidBody::GetForces()
-{
-	return (m_forces);
-}
-
-bool RigidBody::IsCircle()
-{
-	return (m_isCircle);
-}
-
-const StrawberryMilk::Math::Vector2 &RigidBody::GetDimensions()
-{
-	return (m_dimensions);
 }

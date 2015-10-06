@@ -13,14 +13,18 @@
     {
       "name": "Transform",
       "dll": "Transform-Component.dll"
+    },
+	{
+      "name": "RigidBody",
+      "dll": "RigidBody-Component.dll"
     }
   ],
   "Scene": [
 	{
       "Main character":
 	  {
-        "Component": "Transform",
-        "data path": ""
+        "Component": "RigidBody",
+        "data path": "asset\\test\\test.json"
       }
     }
 	]

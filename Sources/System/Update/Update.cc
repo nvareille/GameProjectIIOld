@@ -49,7 +49,7 @@ namespace HeroesSoul
 
 	bool UpdateSystem::registerEntity(StrawberryMilk::Entity::ID entity)
 	{
-		printf("ADD\n");
+		std::cout << "ADD TO UPDATE SYSTEM" << std::endl;
 
 		m_entities.push_back(entity);
 		return (true);
