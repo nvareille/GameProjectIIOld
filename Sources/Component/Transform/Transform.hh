@@ -3,9 +3,10 @@
 #include "../../../engine/Component/Component.hh"
 #include "../../../engine/src/Vector2.hh"
 
-class Transform : public StrawberryMilk::Component::Component
+class __declspec(dllexport) Transform : public StrawberryMilk::Component::Component
 {
 public:
+	Transform();
 	Transform(StrawberryMilk::Component::Type::IDComponent id);
 	~Transform();
 	Transform(Transform const &&) = delete;

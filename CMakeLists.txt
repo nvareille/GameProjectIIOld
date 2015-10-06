@@ -73,4 +73,5 @@ add_library(Transform-Component SHARED
 	engine/includes/Engine.hh
 
 	Sources/Component/Transform/Transform.hh
+	Sources/Component/Transform/Transform.cc
 )

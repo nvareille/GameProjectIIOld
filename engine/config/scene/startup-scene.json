@@ -9,18 +9,14 @@
     {
       "name": "test",
       "dll": "test.dll"
-    },
-	{
-		"name": "Transform",
-		"dll": "Transform-Component.dll"
-	}
+    }
   ],
   "Scene": [
 	{
       "Main character":
 	  {
-        "Component": "Transform",
-        "data path": "asset\\test\\test.json"
+        "Component": "test",
+        "data path": ""
       }
     }
 	]
