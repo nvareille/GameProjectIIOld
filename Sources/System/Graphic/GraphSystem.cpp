@@ -2,6 +2,14 @@
 
 #include <iostream>
 
+extern "C"
+{
+	__declspec(dllexport) StrawberryMilk::System *create(void)
+	{
+		return dynamic_cast<StrawberryMilk::System *>(new GraphSystem);
+	}
+}
+
 GraphSystem::GraphSystem()
 {
 	mGraphics = NULL;
@@ -11,7 +19,7 @@ GraphSystem::~GraphSystem()
 {
 }
 
-bool GraphSystem::Init()
+void GraphSystem::init()
 {
 	int screenWidth, screenHeight;
 
@@ -24,19 +32,17 @@ bool GraphSystem::Init()
 
 	if (!(mGraphics = new GraphicsCore))
 	{
-		return false;
+		return;
 	}
 
 	if (!(mGraphics->Init(screenWidth, screenHeight, mHwnd)))
 	{
-		return false;
+		return;
 	}
-
-	return true;
-
+	return;
 }
 
-void GraphSystem::Destroy()
+void GraphSystem::destroy()
 {
 	if (mGraphics)
 	{
@@ -93,6 +99,14 @@ bool GraphSystem::Update()
 	}
 
 	return true;
+}
+
+void GraphSystem::update(StrawberryMilk::Engine *engine, std::chrono::duration<double> deltatime)
+{
+	if (!(mGraphics->Update())){
+		//throw exception;
+		return;
+	}
 }
 
 LRESULT CALLBACK GraphSystem::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)

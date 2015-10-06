@@ -4,22 +4,27 @@
 
 #include <windows.h>
 #include <windowsx.h>
+#include <iostream>
+#include <chrono>
 
-//#include "inputclass.h"
+#include "../../../engine/System/System.hh"
 #include "GraphicsCore.h"
 
 #define SCREEN_WIDTH = 800
 #define SCREEN_HEIGHT = 600
 
-class GraphSystem
+struct __declspec(dllexport) GraphSystem : public StrawberryMilk::System
 {
 public:
 	GraphSystem();
 	~GraphSystem();
 
-	bool Init();
-	void Destroy();
+	void init();
+	void destroy();
 	void Run();
+	void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
+
+	bool registerEntity(StrawberryMilk::Entity::ID) { return true; };
 
 	LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
@@ -33,7 +38,6 @@ private:
 	HINSTANCE mHinstance;
 	HWND mHwnd;
 
-//	InputHandler* _input;
 	GraphicsCore* mGraphics;
 };
 
