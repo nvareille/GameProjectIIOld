@@ -24,18 +24,19 @@
     }
   ],
   "Scene": [
-    {
-      "Lol": [{
-        "Component": "test",
-        "data path": ""
-      }, {
-        "Component": "test",
-        "data path": ""
-      }],
-      "Main character": [{
-        "Component": "Transform",
-        "data path": ""
-      }]
+	{
+      "Main character":
+	  [
+		  {
+			"Component": "Transform",
+			"data path": "asset\\Block1\\Block1.json"
+		  },
+		  {
+			"Component": "RigidBody",
+			"data path": "asset\\Block1\\Block1.json"
+		  }
+		  
+		]
 
     }
 	]

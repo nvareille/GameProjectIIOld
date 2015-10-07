@@ -28,7 +28,7 @@ namespace HeroesSoul
 		std::cout << "Init" << std::endl;
 	}
 
-	void UpdateSystem::update(StrawberryMilk::Engine *engine, std::chrono::duration<double>)
+	void UpdateSystem::update(StrawberryMilk::Engine *engine, double)
 	{
 		for (auto entity : m_entities)
 		{
@@ -36,7 +36,7 @@ namespace HeroesSoul
 
 			for (auto component : components)
 			{
-				component->update();
+				component->update(engine);
 			}
 		}
 

@@ -4,6 +4,8 @@
 
 namespace StrawberryMilk {
 
+	class Engine;
+
   namespace Component {
 
     namespace Type {
@@ -24,9 +26,9 @@ namespace StrawberryMilk {
 
       // system loop
     public:
-      virtual void init(std::string const &) = 0;
-      virtual void update() = 0;
-      virtual void destroy() = 0;
+      virtual void init(std::string const &, StrawberryMilk::Engine *) = 0;
+	  virtual void update(StrawberryMilk::Engine *) = 0;
+	  virtual void destroy(StrawberryMilk::Engine *) = 0;
 
       // getter
     public:

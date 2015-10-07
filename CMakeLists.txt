@@ -106,6 +106,7 @@ add_library(DrawableComponent SHARED
 	engine/src/Vector2.hh
 	engine/src/Vector2.cc
 	engine/src/Jsoncpp.cpp
+	engine/src/JsonSerializer.cpp
 	engine/includes/Engine.hh
 	Sources/Component/Transform/Transform.hh
 

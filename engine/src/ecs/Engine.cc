@@ -14,19 +14,20 @@ void StrawberryMilk::Engine::stop() {
 
 void StrawberryMilk::Engine::run() {
 
-  std::chrono::high_resolution_clock::time_point time_begin = std::chrono::high_resolution_clock::now();
-  std::chrono::high_resolution_clock::time_point time_end = std::chrono::high_resolution_clock::now();
+	std::chrono::high_resolution_clock::time_point prev = std::chrono::high_resolution_clock::now();
+	std::chrono::high_resolution_clock::time_point last = std::chrono::high_resolution_clock::now();
+	double delta = 0;
 
   while (mContinue) {
-    std::chrono::duration<double> delta = std::chrono::duration_cast<std::chrono::duration<double>>(time_end - time_begin);
-
+	  prev = std::chrono::high_resolution_clock::now();	  
 	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
       if (system->isActive()) {
-        system->update(this, delta);
+        system->update(this, delta / 1000);
       }
 	  });
-    time_begin = time_end;
-    time_end = std::chrono::high_resolution_clock::now();
+	  Sleep(16);
+    last = std::chrono::high_resolution_clock::now();
+	delta = std::chrono::duration_cast<std::chrono::milliseconds>(last - prev).count();
   }
 
   mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
@@ -77,7 +78,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 		{
           StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
           mEntity.addComponentOnEntity(id_entity, component);
-		  component->init(comp.second);
+		  component->init(comp.second, this);
 		}
 
 		/*WARNING TO FIX*/

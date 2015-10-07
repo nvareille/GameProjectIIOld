@@ -20,7 +20,7 @@ Transform::~Transform()
 {
 }
 
-void Transform::init(std::string const &str)
+void Transform::init(std::string const &str, StrawberryMilk::Engine *)
 {
 	JsonLoader jl(str);
 
@@ -29,19 +29,12 @@ void Transform::init(std::string const &str)
 	jl.loadObject(this);
 }
 
-void Transform::update()
+void Transform::update(StrawberryMilk::Engine *)
 {
+	printf("position: %f %f\n", m_position.x, m_position.y);
 }
 
-void Transform::destroy()
+void Transform::destroy(StrawberryMilk::Engine *)
 {
 
 }
-
-/*void Transform::Serialize(Json::Value& root)
-{
-}
-
-void Transform::Deserialize(Json::Value& root)
-{
-}*/

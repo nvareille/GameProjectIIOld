@@ -21,7 +21,7 @@ namespace HeroesSoul
 		// system loop
 	public:
 		virtual void init(StrawberryMilk::Engine *);
-		virtual void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
+		virtual void update(StrawberryMilk::Engine *, double);
 		virtual void destroy(StrawberryMilk::Engine *);
 
 		// member function entity
@@ -34,6 +34,8 @@ namespace HeroesSoul
 		bool CompareCircles(RigidBody **, Transform **);
 		bool CompareRectCircle(RigidBody **, Transform **);
 		void SwapContainers(void *);
+
+		void ApplyEulerIntegration(StrawberryMilk::Engine *, StrawberryMilk::Entity::ID, double);
 
 	private:
 		std::list<StrawberryMilk::Entity::ID> m_entities;
