@@ -26,10 +26,12 @@ namespace HeroesSoul
 		std::cout << "Init" << std::endl;
 	}
 
-	void PhysicSystem::update(StrawberryMilk::Engine *engine, std::chrono::duration<double>)
+	void PhysicSystem::update(StrawberryMilk::Engine *engine, double dt)
 	{
 		for (auto entity = m_entities.begin(); entity != m_entities.end(); ++entity)
 		{
+			ApplyEulerIntegration(engine, *entity, dt);
+
 			try
 			{
 				auto entityNext = entity;
@@ -124,6 +126,19 @@ namespace HeroesSoul
 	bool PhysicSystem::CompareRectCircle(RigidBody **, Transform **)
 	{
 		return (false);
+	}
+
+	void PhysicSystem::ApplyEulerIntegration(StrawberryMilk::Engine *engine, StrawberryMilk::Entity::ID id, double dt)
+	{
+		RigidBody *body = engine->getComponentFromEntity<RigidBody>(id);
+		Transform *transform = engine->getComponentFromEntity<Transform>(id);
+
+		printf("sec %f\n", dt);
+
+		double v = (1 / body->GetMass() * 10) * dt;
+		transform->m_position += StrawberryMilk::Math::Vector2(0, v * dt);
+		//v += (1 / m * F) * dt
+		//x += v * dt
 	}
 
 	Square::Square(RigidBody *body, Transform *transform)

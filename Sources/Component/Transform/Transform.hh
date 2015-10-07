@@ -38,7 +38,7 @@ public:
 	StrawberryMilk::Math::Vector2 &Rotation() { return m_rotation; };
 	StrawberryMilk::Math::Vector2 &Scale() { return m_scale; };
 
-private:
+public:
 	StrawberryMilk::Math::Vector2 m_position;
 	StrawberryMilk::Math::Vector2 m_rotation;
 	StrawberryMilk::Math::Vector2 m_scale;

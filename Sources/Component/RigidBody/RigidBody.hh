@@ -29,7 +29,7 @@ public:
 	}
 
 public:
-	float GetMass();
+	float GetMass() { return (m_mass); };
 	const StrawberryMilk::Math::Vector2 &GetDimensions() { return (m_dimensions); };
 	const StrawberryMilk::Math::Vector2 &GetForces() { return (m_forces); };
 	bool IsCircle() { return(m_isCircle); };

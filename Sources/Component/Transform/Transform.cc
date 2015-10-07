@@ -31,6 +31,7 @@ void Transform::init(std::string const &str, StrawberryMilk::Engine *)
 
 void Transform::update(StrawberryMilk::Engine *)
 {
+	printf("position: %f %f\n", m_position.x, m_position.y);
 }
 
 void Transform::destroy(StrawberryMilk::Engine *)

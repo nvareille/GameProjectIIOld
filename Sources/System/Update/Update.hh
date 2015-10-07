@@ -19,7 +19,7 @@ namespace HeroesSoul
 		// system loop
 	public:
 		virtual void init(StrawberryMilk::Engine *);
-		virtual void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
+		virtual void update(StrawberryMilk::Engine *, double);
 		virtual void destroy(StrawberryMilk::Engine *);
 
 		// member function entity
