@@ -1,4 +1,4 @@
-#include "ThreadPool.h"
+#include "../includes/ThreadPool.hh"
 
 namespace StrawberryMilk
 {
@@ -29,7 +29,7 @@ namespace StrawberryMilk
 							tasks.pop_front();
 							workingThreads++;
 						}
-						
+
 						task();
 					}
 				});
@@ -44,7 +44,7 @@ namespace StrawberryMilk
 				threads[i].join();
 		}
 
-		void ThreadPool::addTask(const std::function<void()>& task)
+		void ThreadPool::addTask(std::function<void()>& task)
 		{
 			{
 				std::unique_lock<std::mutex> lock(mutexTasks);

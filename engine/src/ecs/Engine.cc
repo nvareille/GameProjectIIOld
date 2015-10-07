@@ -1,7 +1,9 @@
 #include <algorithm>
 #include <utility>
 #include <chrono>
+#include <functional>
 #include "../../includes/Engine.hh"
+#include "../../includes/ThreadPool.hh"
 #include "../../system/System.hh"
 #include "../../lib/JsonLoader.hh"
 
@@ -16,17 +18,26 @@ void StrawberryMilk::Engine::run() {
 
   std::chrono::high_resolution_clock::time_point time_begin = std::chrono::high_resolution_clock::now();
   std::chrono::high_resolution_clock::time_point time_end = std::chrono::high_resolution_clock::now();
+  unsigned concurentThreadsSupported = std::thread::hardware_concurrency();
+  concurentThreadsSupported = concurentThreadsSupported == 0 ? 1 : concurentThreadsSupported;
+  std::cout << concurentThreadsSupported << std::endl;
+  StrawberryMilk::Thread::ThreadPool threadpool(concurentThreadsSupported);
 
   while (mContinue) {
     std::chrono::duration<double> delta = std::chrono::duration_cast<std::chrono::duration<double>>(time_end - time_begin);
 
 	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
-      if (system->isActive()) {
-        system->update(this, delta);
-      }
+		  std::function<void()> task = [&]() {
+			  if (system->isActive()) {
+				  system->update(this, delta);
+			  }
+		  };
+		  threadpool.addTask(task);
 	  });
     time_begin = time_end;
     time_end = std::chrono::high_resolution_clock::now();
+	  while (threadpool.getWorkingThreads() != 0);
+    std::cout << "lol" << std::endl;
   }
 
   mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
