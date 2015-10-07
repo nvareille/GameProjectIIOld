@@ -42,7 +42,8 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
       std::pair<std::string, std::string> system = e.top();
       try {
         std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
-        mSystem.insertSystem(system.first, path);
+		std::cout << path << std::endl;
+		mSystem.insertSystem(system.first, path);
       } catch (...) {
 
       }
