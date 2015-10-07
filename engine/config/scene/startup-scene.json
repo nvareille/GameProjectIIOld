@@ -23,7 +23,7 @@
 	{
       "Main character":
 	  {
-        "Component": "RigidBody",
+        "Component": "Transform",
         "data path": "asset\\test\\test.json"
       }
     }

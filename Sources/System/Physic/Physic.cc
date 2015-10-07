@@ -37,7 +37,7 @@ namespace HeroesSoul
 
 				for (; entityNext != m_entities.end(); ++entityNext)
 				{
-					CompareEntities(*entity, *entityNext, engine);
+					//CompareEntities(*entity, *entityNext, engine);
 				}
 			}
 			catch (...)

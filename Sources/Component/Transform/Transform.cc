@@ -1,4 +1,5 @@
 #include "Transform.hh"
+#include "JsonLoader.hh"
 
 extern "C"
 {
@@ -22,7 +23,10 @@ Transform::~Transform()
 
 void Transform::init(std::string const &str)
 {
-	printf("%s\n", str);
+	JsonLoader jl(str);
+
+	jl.LoadFile();
+	jl.loadObject(this);
 }
 
 void Transform::update()
@@ -32,4 +36,12 @@ void Transform::update()
 void Transform::destroy()
 {
 
+}
+
+void Transform::Serialize(Json::Value& root)
+{
+}
+
+void Transform::Deserialize(Json::Value& root)
+{
 }
