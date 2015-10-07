@@ -3,6 +3,10 @@
     {
       "name": "GraphicSystem",
       "dll": "GraphicSystem.dll"
+	},
+	{
+      "name": "Physic",
+      "dll": "physic-System.dll"
     }
   ],
   "Component": [
@@ -13,7 +17,11 @@
     {
       "name": "test",
       "dll": "test.dll"
-    }
+    },
+	{
+		"name": "Transform",
+		"dll": "Transform-Component.dll"
+	}
   ],
   "Scene": [
     {
@@ -29,5 +37,5 @@
         "data path": ""
       }]
     }
-  ]
+	]
 }

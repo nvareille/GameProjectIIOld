@@ -31,3 +31,13 @@ const StrawberryMilk::Math::Vector2 &RigidBody::GetForces()
 {
 	return (m_forces);
 }
+
+bool RigidBody::IsCircle()
+{
+	return (m_isCircle);
+}
+
+const StrawberryMilk::Math::Vector2 &RigidBody::GetDimensions()
+{
+	return (m_dimensions);
+}

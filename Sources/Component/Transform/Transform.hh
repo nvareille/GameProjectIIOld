@@ -6,7 +6,7 @@
 class Transform : public StrawberryMilk::Component::Component
 {
 public:
-	Transform(StrawberryMilk::Component::Type::IDComponent id) : Component(id) {};
+	Transform(StrawberryMilk::Component::Type::IDComponent id);
 	~Transform();
 	Transform(Transform const &&) = delete;
 	Transform(Transform const &) = delete;

@@ -119,3 +119,4 @@ add_library(DrawableComponent SHARED
 	Sources/Component/DrawableComponent/DrawableComponent.cpp
 	Sources/Component/DrawableComponent/DrawableComponentCreator.cpp
 )
+

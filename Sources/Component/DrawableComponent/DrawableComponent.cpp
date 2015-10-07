@@ -1,4 +1,5 @@
 #include "DrawableComponent.h"
+#include "../../System/Graphic/GraphSystem.h"
 
 DrawableComponent::DrawableComponent() : StrawberryMilk::Component::Component(666)
 {
@@ -52,12 +53,53 @@ bool DrawableComponent::Init(ID3D10Device* device, int screenWidth, int screenHe
 	return true;
 }
 
-void DrawableComponent::init(std::string const &)
+void DrawableComponent::init(std::string const &, StrawberryMilk::Engine *engine)
 {
+//	GraphSystem tmpGraph;
+
+	HeroesSoul::GraphSystem* tmp;
+	tmp = dynamic_cast<HeroesSoul::GraphSystem*>(&engine->getSystem("GraphicSystem"));
+
+	mBitmapWidth = 256;
+	mBitmapHeight = 256;
+
+	mPreviousPosX = -1;
+	mPreviousPosY = -1;
+
+	mPositionX = 0;
+	mPositionY = 0;
+
+	mScaleFactor = 1;
+
+	mLayout = Layout::FRONT;
 	//GraphSystem->
+
+	// Initialize the vertex and index buffer that hold the geometry for the triangle.
+	
+	if (!(InitBuffers(tmp->GetDevice())))
+	{
+		return;
+	}
+
+	// Load the texture for this model.
+	if (!(LoadTexture(tmp->GetDevice(), "../../../Assets/Src_Graph/Texture/seafloor.dds")))
+	{
+		return;
+	}
 }
 
-void DrawableComponent::destroy()
+void DrawableComponent::destroy(StrawberryMilk::Engine *engine)
+{
+	// Release the model texture.
+	ReleaseTexture();
+
+	// Release the vertex and index buffers.
+	DestroyBuffers();
+
+	return;
+}
+
+void DrawableComponent::Destroy()
 {
 	// Release the model texture.
 	ReleaseTexture();

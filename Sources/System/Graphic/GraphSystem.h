@@ -22,8 +22,8 @@ namespace HeroesSoul
 		GraphSystem();
 		~GraphSystem();
 
-		void init();
-		void destroy();
+		void init(StrawberryMilk::Engine *);
+		void destroy(StrawberryMilk::Engine *);
 		void Run();
 		void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
 

@@ -4,6 +4,7 @@
 #include <chrono>
 
 #include "../../../engine/component/Component.hh"
+#include "../../../engine/includes/Engine.hh"
 #include "../../System/Graphic/TextureHandler.h"
 #include "../../Component/Transform/Transform.hh"
 #include "../../../engine/src/Vector2.hh"
@@ -15,6 +16,8 @@ enum Layout
 	MIDDLE,
 	BACKGROUND
 };
+
+struct __declspec(dllexport) GraphSystem;
 
 struct __declspec(dllexport)  DrawableComponent : public StrawberryMilk::Component::Component
 {
@@ -29,10 +32,11 @@ public:
 	DrawableComponent();
 	~DrawableComponent();
 
-	void init(std::string const &);
-	void destroy();
-	void update() {};
+	void init(std::string const &, StrawberryMilk::Engine *);
+	void destroy(StrawberryMilk::Engine *);
+	void update(StrawberryMilk::Engine *) {};
 
+	void Destroy();
 	bool Init(ID3D10Device*, int, int, char*, int, int, int, Layout);
 	bool Render(ID3D10Device*);
 

@@ -21,7 +21,7 @@ namespace HeroesSoul
 	{
 	}
 
-	void GraphSystem::init()
+	void GraphSystem::init(StrawberryMilk::Engine *engine)
 	{
 		int screenWidth, screenHeight;
 
@@ -44,7 +44,7 @@ namespace HeroesSoul
 		return;
 	}
 
-	void GraphSystem::destroy()
+	void GraphSystem::destroy(StrawberryMilk::Engine *engine)
 	{
 		if (mGraphics)
 		{

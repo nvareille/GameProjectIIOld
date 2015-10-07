@@ -61,7 +61,7 @@ void GraphicsCore::Destroy()
 	// Release the bitmap object.
 	for (std::list<DrawableComponent*>::const_iterator iterator = mDrawableComponents.begin(); iterator != mDrawableComponents.end(); ++iterator)
 	{
-		(*iterator)->destroy();
+		(*iterator)->Destroy();
 		//delete mDrawableComponent;
 	}
 	mDrawableComponents.clear();
