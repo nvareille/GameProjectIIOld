@@ -7,16 +7,27 @@
   ],
   "Component": [
     {
+      "name": "Transform",
+      "dll": "Transform-Component.dll"
+    },
+    {
       "name": "test",
       "dll": "test.dll"
     }
   ],
   "Scene": [
     {
-      "Main character": {
+      "Lol": [{
         "Component": "test",
         "data path": ""
-      }
+      }, {
+        "Component": "test",
+        "data path": ""
+      }],
+      "Main character": [{
+        "Component": "Transform",
+        "data path": ""
+      }]
     }
   ]
 }

@@ -3,6 +3,7 @@
 #include <list>
 
 #include "../../../engine/System/System.hh"
+#include "../../../engine/includes/Engine.hh"
 
 namespace HeroesSoul
 {
@@ -24,15 +25,9 @@ namespace HeroesSoul
 
 		// member function entity
 	public:
-		virtual bool registerEntity(StrawberryMilk::Entity::ID);
+		virtual bool registerEntity(void *);
 
 	private:
-		void CompareEntities(StrawberryMilk::Entity::ID, StrawberryMilk::Entity::ID, StrawberryMilk::Engine *);
-		bool CompareRects();
-		bool CompareCircles();
-		bool CompareRectCircle();
-
-	private:
-		std::list<StrawberryMilk::Entity::ID> m_entities;
+		std::list<void *> m_entities;
 	};
 };

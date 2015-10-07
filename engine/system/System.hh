@@ -27,9 +27,9 @@ namespace StrawberryMilk {
 
     // system loop
   public:
-    virtual void init() = 0;
+	  virtual void init(Engine *) = 0;
     virtual void update(Engine *, std::chrono::duration<double>) = 0;
-    virtual void destroy() = 0;
+	virtual void destroy(Engine *) = 0;
 
     // member function entity
   public:

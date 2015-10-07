@@ -6,6 +6,7 @@
 
 namespace StrawberryMilk {
 
+  class Engine;
   class SystemManager {
 
   public:
@@ -18,7 +19,7 @@ namespace StrawberryMilk {
     // system fct
   public:
     StrawberryMilk::System &getSystem(std::string const &) const;
-    void insertSystem(std::string const &, std::string const &);
+    void insertSystem(std::string const &, std::string const &, StrawberryMilk::Engine *);
 
     template<typename T>
     void updateAllSystem(T fct) {
