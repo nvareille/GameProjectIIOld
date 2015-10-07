@@ -15,9 +15,9 @@ public:
 
 	// system loop
 public:
-	virtual void init(std::string const &);
-	virtual void update();
-	virtual void destroy();
+	virtual void init(std::string const &, StrawberryMilk::Engine *);
+	virtual void update(StrawberryMilk::Engine *);
+	virtual void destroy(StrawberryMilk::Engine *);
 
 public:
 	virtual void Serialize(Json::Value &root)
@@ -27,8 +27,8 @@ public:
 
 	virtual void Deserialize(Json::Value &root)
 	{
-		m_position.x = root["Position"]["x"].asFloat();
-		m_position.y = root["Position"]["y"].asFloat();
+		m_position.x = root["Transform"]["Position"]["x"].asFloat();
+		m_position.y = root["Transform"]["Position"]["y"].asFloat();
 
 		printf("%f %f\n", m_position.x, m_position.y);
 	}

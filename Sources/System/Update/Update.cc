@@ -36,7 +36,7 @@ namespace HeroesSoul
 
 			for (auto component : components)
 			{
-				component->update();
+				component->update(engine);
 			}
 		}
 

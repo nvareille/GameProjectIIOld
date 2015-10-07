@@ -16,16 +16,20 @@ RigidBody::~RigidBody()
 {
 }
 
-void RigidBody::init(std::string const &)
+void RigidBody::init(std::string const &str, StrawberryMilk::Engine *)
 {
+	JsonLoader jl(str);
 
+	jl.LoadFile();
+	jl.showContent();
+	jl.loadObject(this);
 }
 
-void RigidBody::update()
+void RigidBody::update(StrawberryMilk::Engine *)
 {
 }
 
-void RigidBody::destroy()
+void RigidBody::destroy(StrawberryMilk::Engine *)
 {
 
 }

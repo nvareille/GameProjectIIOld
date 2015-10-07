@@ -77,7 +77,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 		{
           StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
           mEntity.addComponentOnEntity(id_entity, component);
-		  component->init(comp.second);
+		  component->init(comp.second, this);
 		}
 
 		/*WARNING TO FIX*/

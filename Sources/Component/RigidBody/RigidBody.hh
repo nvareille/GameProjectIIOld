@@ -13,9 +13,9 @@ public:
 
 	// system loop
 public:
-	virtual void init(std::string const &);
-	virtual void update();
-	virtual void destroy();
+	virtual void init(std::string const &, StrawberryMilk::Engine *);
+	virtual void update(StrawberryMilk::Engine *);
+	virtual void destroy(StrawberryMilk::Engine *);
 
 	virtual void Serialize(Json::Value &)
 	{
@@ -24,7 +24,8 @@ public:
 
 	virtual void Deserialize(Json::Value &root)
 	{
-		//m_isCircle = root["RigidBody"][]
+		m_isCircle = root["RigidBody"]["isCircle"].asBool();
+		m_mass = root["RigidBody"]["mass"].asFloat();
 	}
 
 public:
