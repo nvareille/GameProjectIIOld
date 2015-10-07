@@ -1,6 +1,7 @@
 #pragma once
 
 #include <list>
+#include <algorithm>
 
 #include "../../../engine/includes/Engine.hh"
 #include "../../../engine/System/System.hh"
@@ -36,6 +37,9 @@ namespace HeroesSoul
 		void SwapContainers(void *);
 
 		void ApplyEulerIntegration(StrawberryMilk::Engine *, StrawberryMilk::Entity::ID, double);
+		void ComputeImpulse(RigidBody **, Transform **);
+		float ComputeDotProduct(const StrawberryMilk::Math::Vector2 &, const StrawberryMilk::Math::Vector2 &) const;
+
 
 	private:
 		std::list<StrawberryMilk::Entity::ID> m_entities;

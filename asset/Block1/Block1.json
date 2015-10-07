@@ -14,7 +14,8 @@
 			"y": 100
 		},
 		"AirResistance": 0.001,
-		"IsKinematic": true		
+		"IsKinematic": true,
+		"Impulse": 20
 	},
 	"Transform":
 	{

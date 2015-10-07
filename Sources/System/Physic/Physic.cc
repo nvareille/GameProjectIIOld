@@ -105,10 +105,11 @@ namespace HeroesSoul
 		{
 			if (CompareRects(body, transform))
 			{
-				body[0]->SetKinematic(true);
-				body[1]->SetKinematic(true);
+				/*body[0]->SetKinematic(true);
+				body[1]->SetKinematic(true);*/
 
 				//SEND MESSAGE TO COLLIDING RECTS
+				ComputeImpulse(body, transform);
 			}
 		}
 	}
@@ -145,6 +146,37 @@ namespace HeroesSoul
 		}
 	}
 
+	void PhysicSystem::ComputeImpulse(RigidBody **body, Transform **transform)
+	{
+		StrawberryMilk::Math::Vector2 normal(0, 1);
+		StrawberryMilk::Math::Vector2 rv = body[1]->GetForces() - body[0]->GetForces();
+		float velAlongNormal = ComputeDotProduct(rv, normal);
+
+		if (velAlongNormal > 0)
+			return;
+
+		//RESTITUTION
+		float e = 1;
+
+		float j = -(1 + e) * velAlongNormal;
+		j /= 1 / body[0]->GetMass() + 1 / body[1]->GetMass();
+
+		StrawberryMilk::Math::Vector2 impulse = normal * j;
+
+		body[0]->SetForce(impulse * body[0]->GetImpulse() * (-1 / body[0]->GetMass()));
+		body[1]->SetForce(impulse * body[1]->GetImpulse() * (1 / body[1]->GetMass()));
+	}
+
+	float PhysicSystem::ComputeDotProduct(const StrawberryMilk::Math::Vector2 &v1, const StrawberryMilk::Math::Vector2 &v2) const
+	{
+		float dotProduct;
+
+		dotProduct = v1.x * v2.x;
+		dotProduct += v1.y * v2.y;
+
+		return (dotProduct);
+	}
+
 	Square::Square(RigidBody *body, Transform *transform)
 	{
 		min = body->GetDimensions() / 2;
@@ -153,7 +185,7 @@ namespace HeroesSoul
 		min = transform->Position() - min;
 		max = transform->Position() + max;
 
-		printf("%f %f %f %f\n", min.x, min.y, max.x, max.y);
+		std::cout << "BOX BOUNDS [X " << min.x << " <=> " << max.x << "] [Y " << min.y << " <=> " << max.y << "]" << std::endl;
 	}
 
 	bool Square::ResolveCollision(const Square &square2)

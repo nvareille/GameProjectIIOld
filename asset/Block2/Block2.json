@@ -14,14 +14,15 @@
 			"y": 100
 		},
 		"AirResistance": 0.001,
-		"IsKinematic": false	
+		"IsKinematic": false,
+		"Impulse": 1
 	},
 	"Transform":
 	{
 		"Position":
 		{
-			"x": 109,
-			"y": 200
+			"x": 10,
+			"y": 250
 		}
 	}
 }

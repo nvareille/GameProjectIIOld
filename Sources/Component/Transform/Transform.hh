@@ -29,8 +29,6 @@ public:
 	{
 		m_position.x = root["Transform"]["Position"]["x"].asFloat();
 		m_position.y = root["Transform"]["Position"]["y"].asFloat();
-
-		printf("%f %f\n", m_position.x, m_position.y);
 	}
 
 public:
