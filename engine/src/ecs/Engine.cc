@@ -36,14 +36,16 @@ void StrawberryMilk::Engine::run() {
 }
 
 void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scene) {
+	std::cout << "debug4";
   {
     auto e = scene.getSystem();
-
+	std::cout << "debug4.5";
     while (!e.empty()) {
+		std::cout << "debug5";
       std::pair<std::string, std::string> system = e.top();
       try {
         std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
-		std::cout << path << std::endl;
+		std::cout << "System : " << path << std::endl;
 		mSystem.insertSystem(system.first, path, this);
       } catch (...) {
 
@@ -57,7 +59,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
     while (!e.empty()) {
       std::pair<std::string, std::string> component = e.top();
       std::string path = "engine\\ressource\\component\\" + component.first + "\\" + component.second;
-      std::cout << path << std::endl;
+	  std::cout << "Component : " << path << std::endl;
       try {
         mComponent.loadComponent(component.first, path);
       } catch (std::invalid_argument &a) {
@@ -104,10 +106,15 @@ void StrawberryMilk::Engine::init() {
    JsonLoader jl("engine\\config\\scene\\startup-scene.json");
    StrawberryMilk::Engine::SceneLoader scene;
 
+   std::cout << "debug1";
    jl.LoadFile();
    jl.showContent();
+   std::cout << "debug2";
    jl.loadObject(&scene);
+   std::cout << "debug3";
    this->loadScene(scene);
+   std::cout << "debugEnd";
+
 }
 
 void StrawberryMilk::Engine::loadScene(std::string const &path) {

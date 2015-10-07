@@ -137,6 +137,7 @@ bool GraphicsCore::Render(float rotation)
 	// Put the bitmap vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	for each (DrawableComponent* obj in mDrawableComponents)
 	{
+		
 		if (!(obj->Render(mD3DWrapper->GetDevice())))
 		{
 			return false;
@@ -157,6 +158,7 @@ bool GraphicsCore::Render(float rotation)
 
 bool GraphicsCore::AddDrawableObject(DrawableComponent *obj)
 {
+	std::cout << "adding obj start" << std::endl;
 	if (obj == NULL)
 		return false;
 
@@ -176,6 +178,8 @@ bool GraphicsCore::AddDrawableObject(DrawableComponent *obj)
 	{
 		mDrawableComponents.insert(iterator, obj);
 	}
+
+	std::cout << "adding obj end" << std::endl;
 
 	return true;
 }

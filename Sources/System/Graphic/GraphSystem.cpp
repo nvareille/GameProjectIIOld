@@ -2,14 +2,6 @@
 
 #include <iostream>
 
-extern "C"
-{
-	__declspec(dllexport) StrawberryMilk::System *create(void)
-	{
-		return dynamic_cast<StrawberryMilk::System *>(new HeroesSoul::GraphSystem);
-	}
-}
-
 namespace HeroesSoul
 {
 	GraphSystem::GraphSystem()
@@ -42,6 +34,8 @@ namespace HeroesSoul
 			return;
 		}
 		return;
+
+		mDevice = mGraphics->GetDevice();
 	}
 
 	void GraphSystem::destroy(StrawberryMilk::Engine *engine)
@@ -103,7 +97,7 @@ namespace HeroesSoul
 		return true;
 	}
 
-	void GraphSystem::update(StrawberryMilk::Engine *engine, std::chrono::duration<double> deltatime)
+	void GraphSystem::update(StrawberryMilk::Engine *engine, double deltatime)
 	{
 		if (!(mGraphics->Update())){
 			//throw exception;

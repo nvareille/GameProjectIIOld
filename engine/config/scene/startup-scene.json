@@ -3,17 +3,13 @@
     {
       "name": "GraphicSystem",
       "dll": "GraphicSystem.dll"
-	},
-	{
-      "name": "Physic",
-      "dll": "physic-System.dll"
-    },
-	{
-      "name": "Update",
-      "dll": "update-System.dll"
-    }
+	}
   ],
   "Component": [
+	{
+		"name": "DrawableComponent",
+		"dll": "DrawableComponent.dll"
+	},
     {
       "name": "Transform",
       "dll": "Transform-Component.dll"
@@ -25,19 +21,12 @@
   ],
   "Scene": [
 	{
-      "Main character":
-	  [
-		  {
-			"Component": "Transform",
-			"data path": "asset\\Block1\\Block1.json"
-		  },
-		  {
-			"Component": "RigidBody",
-			"data path": "asset\\Block1\\Block1.json"
-		  }
-		  
+		"COUCOU": [
+		{
+			"Component": "DrawableComponent",
+			"data path": ""
+		}
 		]
-
     }
 	]
 }

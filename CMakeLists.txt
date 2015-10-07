@@ -63,9 +63,11 @@ set(ENABLE_CXX_EXCEPTIONS = 1)
 
 include_directories(
 	engine/src
+	Sources/Librairies/Microsoft_DirectX_SDK/Include 
 	)
 
 add_library(GraphicSystem SHARED 
+	Sources/Librairies/Microsoft_DirectX_SDK/Lib/x86
 
 	engine/system/System.hh
 	engine/Component/Component.hh
@@ -99,9 +101,12 @@ set(ENABLE_CXX_EXCEPTIONS = 1)
 
 include_directories(
 	engine/src
+	Sources/Librairies/Microsoft_DirectX_SDK/Include 
 	)
 
-add_library(DrawableComponent SHARED  
+add_library(DrawableComponent SHARED
+	Sources/Librairies/Microsoft_DirectX_SDK/Lib/x86
+  
 	engine/Component/Component.hh
 	engine/src/Vector2.hh
 	engine/src/Vector2.cc

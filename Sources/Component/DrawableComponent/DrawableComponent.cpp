@@ -57,8 +57,10 @@ void DrawableComponent::init(std::string const &, StrawberryMilk::Engine *engine
 {
 //	GraphSystem tmpGraph;
 
+	std::cout << "init drawable" << std::endl;
+
 	HeroesSoul::GraphSystem* tmp;
-	tmp = dynamic_cast<HeroesSoul::GraphSystem*>(&engine->getSystem("GraphicSystem"));
+	tmp = dynamic_cast<HeroesSoul::GraphSystem*>(&engine->getSystemFromSystemManager("GraphicSystem"));
 
 	mBitmapWidth = 256;
 	mBitmapHeight = 256;
@@ -78,14 +80,18 @@ void DrawableComponent::init(std::string const &, StrawberryMilk::Engine *engine
 	
 	if (!(InitBuffers(tmp->GetDevice())))
 	{
+		std::cout << "error initBuffer DrawableComponent";
 		return;
 	}
 
 	// Load the texture for this model.
-	if (!(LoadTexture(tmp->GetDevice(), "../../../Assets/Src_Graph/Texture/seafloor.dds")))
+	if (!(LoadTexture(tmp->GetDevice(), "Assets/Src_Graph/Texture/seafloor.dds")))
 	{
+		std::cout << "error loadTexture DrawableComponent";
 		return;
 	}
+
+	tmp->AddDrawableComponentForGraphCore(this);
 }
 
 void DrawableComponent::destroy(StrawberryMilk::Engine *engine)
@@ -384,6 +390,7 @@ bool DrawableComponent::LoadTexture(ID3D10Device* device, char* filename)
 	mTexture = new TextureHandler;
 	if (!mTexture)
 	{
+		std::cout << "error sur un new Texture Handler O_o" << std::endl;
 		return false;
 	}
 
@@ -391,6 +398,7 @@ bool DrawableComponent::LoadTexture(ID3D10Device* device, char* filename)
 	result = mTexture->Init(device, filename);
 	if (!result)
 	{
+		std::cout << "error init texture" << std::endl;
 		return false;
 	}
 

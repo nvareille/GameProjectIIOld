@@ -25,13 +25,15 @@ namespace HeroesSoul
 		void init(StrawberryMilk::Engine *);
 		void destroy(StrawberryMilk::Engine *);
 		void Run();
-		void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
+		void update(StrawberryMilk::Engine *, double);
 
 		bool registerEntity(StrawberryMilk::Entity::ID) { return true; };
 
 		LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
 		ID3D10Device* GetDevice() { return mGraphics->GetDevice(); }
+
+		void AddDrawableComponentForGraphCore(DrawableComponent *obj) { mGraphics->AddDrawableObject(obj); }
 
 	private:
 		bool Update();
@@ -42,6 +44,8 @@ namespace HeroesSoul
 		LPCSTR mApplicationName;
 		HINSTANCE mHinstance;
 		HWND mHwnd;
+
+		ID3D10Device* mDevice;
 
 		GraphicsCore* mGraphics;
 	};

@@ -1,5 +1,6 @@
 #include "TextureHandler.h"
 
+#include <iostream>
 
 TextureHandler::TextureHandler()
 {
@@ -20,6 +21,7 @@ bool TextureHandler::Init(ID3D10Device* device, char* filename)
 	result = D3DX10CreateShaderResourceViewFromFile(device, filename, NULL, NULL, &mTexture, NULL);
 	if (FAILED(result))
 	{
+		std::cout << result << std::endl;
 		return false;
 	}
 
