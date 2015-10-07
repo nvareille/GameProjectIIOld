@@ -3,7 +3,7 @@
 #include <chrono>
 #include "../../includes/Engine.hh"
 #include "../../system/System.hh"
-#include "../../lib/JsonLoader.hh"
+#include "JsonLoader.hh"
 
 StrawberryMilk::Engine::Engine() : mContinue(true) {}
 StrawberryMilk::Engine::~Engine() {}
@@ -73,10 +73,16 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
 
       try {
         StrawberryMilk::Entity::ID id_entity = mEntity.createEntity();
-        for (auto comp: instr) {
+        for (auto comp: instr)
+		{
           StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
           mEntity.addComponentOnEntity(id_entity, component);
-        }
+		  component->init(comp.second);
+		}
+
+		/*WARNING TO FIX*/
+
+		/*^ TO FIX ^*/
 
         mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
           if (system->isActive()) {

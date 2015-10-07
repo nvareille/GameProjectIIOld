@@ -2,6 +2,7 @@
 
 #include <list>
 
+#include "../../../engine/includes/Engine.hh"
 #include "../../../engine/System/System.hh"
 #include "../../Component/RigidBody/RigidBody.hh"
 
@@ -19,13 +20,13 @@ namespace HeroesSoul
 
 		// system loop
 	public:
-		virtual void init();
+		virtual void init(StrawberryMilk::Engine *);
 		virtual void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
-		virtual void destroy();
+		virtual void destroy(StrawberryMilk::Engine *);
 
 		// member function entity
 	public:
-		virtual bool registerEntity(void *);
+		virtual bool registerEntity(StrawberryMilk::Entity::ID);
 
 	private:
 		void CompareEntities(StrawberryMilk::Entity::ID, StrawberryMilk::Entity::ID, StrawberryMilk::Engine *);

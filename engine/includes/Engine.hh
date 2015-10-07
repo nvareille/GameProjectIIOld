@@ -6,8 +6,8 @@
 #include "SystemManager.hh"
 #include "EntityManager.hh"
 #include "ComponentManager.hh"
-#include "../lib/json/json.h"
-#include "../lib/IJsonSerializable.hh"
+#include "json/json.h"
+#include "IJsonSerializable.hh"
 
 
 namespace StrawberryMilk {
@@ -22,9 +22,9 @@ namespace StrawberryMilk {
       ~SceneLoader() {};
 
     public:
-      void Serialize(Json::Value &root) { };
+      virtual void Serialize(Json::Value &root) { };
 
-      void Deserialize(Json::Value &root) {
+      virtual void Deserialize(Json::Value &root) {
         for (auto e : root["System"]) {
           mSystem.push(std::make_pair(e["name"].asString(), e["dll"].asString()));
         }
@@ -72,6 +72,10 @@ namespace StrawberryMilk {
 	   T *getComponentFromEntity(StrawberryMilk::Entity::ID id) {
        return mEntity.getComponentFromEntity<T>(id);
      };
+	   std::list<StrawberryMilk::Component::Component *> &GetComponents(StrawberryMilk::Entity::ID id)
+	   {
+		   return (mEntity.GetComponents(id));
+	   }
 
   public:
     void init();

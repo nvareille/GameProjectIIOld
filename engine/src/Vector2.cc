@@ -80,5 +80,18 @@ namespace StrawberryMilk
 			x = x / _value;
 			y = y / _value;
 		}
+
+		/* Serialization*/
+		void Vector2::Serialize(Json::Value& root)
+		{
+			root["Vector2"]["vector2X"] = x;
+			root["Vector2"]["vector2Y"] = y;
+		}
+
+		void Vector2::Deserialize(Json::Value& root)
+		{
+			x = root["Vector2"].get("vector2X", 0.0f).asFloat();
+			y = root["Vector2"].get("vector2Y", 0.0f).asFloat();
+		}
 	};
 };

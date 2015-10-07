@@ -7,6 +7,10 @@
 	{
       "name": "Physic",
       "dll": "physic-System.dll"
+    },
+	{
+      "name": "Update",
+      "dll": "update-System.dll"
     }
   ],
   "Component": [
@@ -14,14 +18,10 @@
       "name": "Transform",
       "dll": "Transform-Component.dll"
     },
-    {
-      "name": "test",
-      "dll": "test.dll"
-    },
 	{
-		"name": "Transform",
-		"dll": "Transform-Component.dll"
-	}
+      "name": "RigidBody",
+      "dll": "RigidBody-Component.dll"
+    }
   ],
   "Scene": [
     {
@@ -36,6 +36,7 @@
         "Component": "Transform",
         "data path": ""
       }]
+
     }
 	]
 }

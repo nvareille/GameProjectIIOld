@@ -1,5 +1,4 @@
 #include "Physic.hh"
-#include "../../../engine/includes/Engine.hh"
 
 namespace HeroesSoul
 {
@@ -21,21 +20,41 @@ namespace HeroesSoul
 		std::cout << "Destruct" << std::endl;
 	}
 
-	void PhysicSystem::init()
+	void PhysicSystem::init(StrawberryMilk::Engine *)
 	{
 		std::cout << "Init" << std::endl;
 	}
 
-	void PhysicSystem::update(StrawberryMilk::Engine *, std::chrono::duration<double>)
+	void PhysicSystem::update(StrawberryMilk::Engine *engine, std::chrono::duration<double>)
 	{
+		for (auto entity = m_entities.begin(); entity != m_entities.end(); ++entity)
+		{
+			try
+			{
+				auto entityNext = entity;
+				++entityNext;
+
+				for (; entityNext != m_entities.end(); ++entityNext)
+				{
+					//CompareEntities(*entity, *entityNext, engine);
+				}
+			}
+			catch (...)
+			{
+				//LOGGING FOR BAD ENTITY (NO RIGIDBODY)
+			}
+		}
 	}
 
-	void PhysicSystem::destroy()
+	void PhysicSystem::destroy(StrawberryMilk::Engine *)
 	{
+
 	}
 
-	bool PhysicSystem::registerEntity(void *entity)
+	bool PhysicSystem::registerEntity(StrawberryMilk::Entity::ID entity)
 	{
+		std::cout << "ADDED TO PHYSIC SYSTEM" << std::endl;
+
 		m_entities.push_back(entity);
 		return (true);
 	}

@@ -30,6 +30,7 @@ namespace StrawberryMilk {
       void destroyEntity(ID);
       ID createEntity();
       void addComponentOnEntity(ID, StrawberryMilk::Component::Component *);
+	  std::list<StrawberryMilk::Component::Component *> &StrawberryMilk::Entity::EntityManager::GetComponents(ID);
 
       template <class T>
       T *getComponentFromEntity(StrawberryMilk::Entity::ID id) {
