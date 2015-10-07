@@ -39,7 +39,7 @@ namespace HeroesSoul
 
 				for (; entityNext != m_entities.end(); ++entityNext)
 				{
-					//CompareEntities(*entity, *entityNext, engine);
+					CompareEntities(*entity, *entityNext, engine);
 				}
 			}
 			catch (...)
@@ -105,6 +105,9 @@ namespace HeroesSoul
 		{
 			if (CompareRects(body, transform))
 			{
+				body[0]->SetKinematic(true);
+				body[1]->SetKinematic(true);
+
 				//SEND MESSAGE TO COLLIDING RECTS
 			}
 		}
@@ -113,7 +116,7 @@ namespace HeroesSoul
 	bool PhysicSystem::CompareRects(RigidBody **body, Transform **transform)
 	{
 		Square square1(body[0], transform[0]);
-		Square square2(body[0], transform[0]);
+		Square square2(body[1], transform[1]);
 
 		return (square1.ResolveCollision(square2));
 	}
@@ -132,13 +135,14 @@ namespace HeroesSoul
 	{
 		RigidBody *body = engine->getComponentFromEntity<RigidBody>(id);
 		Transform *transform = engine->getComponentFromEntity<Transform>(id);
-
-		printf("sec %f\n", dt);
-
-		double v = (1 / body->GetMass() * 10) * dt;
-		transform->m_position += StrawberryMilk::Math::Vector2(0, v * dt);
-		//v += (1 / m * F) * dt
-		//x += v * dt
+		double ResistanceFactor = (1 - body->GetAirResistance());
+		
+		if (!body->IsKinematic())
+		{
+			body->AddForce(StrawberryMilk::Math::Vector2(0, (1 / body->GetMass()) * dt) / ResistanceFactor);
+			body->SetForce(body->GetForces() * ResistanceFactor);
+			transform->m_position -= StrawberryMilk::Math::Vector2(-body->GetForces().x * dt * ResistanceFactor, body->GetForces().y * dt);
+		}
 	}
 
 	Square::Square(RigidBody *body, Transform *transform)
@@ -146,8 +150,10 @@ namespace HeroesSoul
 		min = body->GetDimensions() / 2;
 		max = min;
 
-		min -= transform->Position();
-		max += transform->Position();
+		min = transform->Position() - min;
+		max = transform->Position() + max;
+
+		printf("%f %f %f %f\n", min.x, min.y, max.x, max.y);
 	}
 
 	bool Square::ResolveCollision(const Square &square2)

@@ -26,6 +26,10 @@ public:
 	{
 		m_isCircle = root["RigidBody"]["isCircle"].asBool();
 		m_mass = root["RigidBody"]["mass"].asFloat();
+		m_forces = StrawberryMilk::Math::Vector2(root["RigidBody"]["Forces"]["x"].asFloat(), root["RigidBody"]["Forces"]["y"].asFloat());
+		m_dimensions = StrawberryMilk::Math::Vector2(root["RigidBody"]["Dimensions"]["x"].asFloat(), root["RigidBody"]["Dimensions"]["y"].asFloat());
+		m_airResistance = root["RigidBody"]["AirResistance"].asFloat();
+		m_isKinematic = root["RigidBody"]["IsKinematic"].asBool();
 	}
 
 public:
@@ -33,6 +37,12 @@ public:
 	const StrawberryMilk::Math::Vector2 &GetDimensions() { return (m_dimensions); };
 	const StrawberryMilk::Math::Vector2 &GetForces() { return (m_forces); };
 	bool IsCircle() { return(m_isCircle); };
+	float GetAirResistance() { return(m_airResistance); };
+	bool IsKinematic() { return (m_isKinematic); };
+
+	void AddForce(const StrawberryMilk::Math::Vector2 &v) { m_forces += v; };
+	void SetForce(const StrawberryMilk::Math::Vector2 &v) { m_forces = v; };
+	void SetKinematic(bool k) { m_isKinematic = k; };
 
 private:
 	StrawberryMilk::Math::Vector2 m_dimensions;
@@ -40,4 +50,6 @@ private:
 	StrawberryMilk::Math::Vector2 m_forces;
 	float m_mass;
 	bool m_isCircle;
+	float m_airResistance;
+	bool m_isKinematic;
 };

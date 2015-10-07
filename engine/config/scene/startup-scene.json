@@ -1,38 +1,55 @@
 {
-  "System": [
-    {
-      "name": "Physic",
-      "dll": "physic-System.dll"
-    },
-	{
-      "name": "Update",
-      "dll": "update-System.dll"
-    }
-  ],
-  "Component": [
-    {
-      "name": "Transform",
-      "dll": "Transform-Component.dll"
-    },
-	{
-      "name": "RigidBody",
-      "dll": "RigidBody-Component.dll"
-    }
-  ],
-  "Scene": [
-	{
-      "Main character":
+	"System":
+	[
+		{
+			"name": "Physic",
+		  "dll": "physic-System.dll"
+		},
+		{
+		  "name": "Update",
+		  "dll": "update-System.dll"
+		}
+	  ],
+	  "Component":
 	  [
-		  {
-			"Component": "Transform",
-			"data path": "asset\\Block1\\Block1.json"
-		  },
-		  {
-			"Component": "RigidBody",
-			"data path": "asset\\Block1\\Block1.json"
-		  }
-		  
-		]
-    }
+		{
+		  "name": "Transform",
+		  "dll": "Transform-Component.dll"
+		},
+		{
+		  "name": "RigidBody",
+		  "dll": "RigidBody-Component.dll"
+		}
+	  ],
+	  "Scene":
+	  [
+		{
+			"Block1":
+			[
+			  {
+				"Component": "Transform",
+				"data path": "asset\\Block1\\Block1.json"
+			  },
+			  {
+				"Component": "RigidBody",
+				"data path": "asset\\Block1\\Block1.json"
+			  }
+			  
+			]
+		},
+		{
+			"Block2":
+			[
+			  {
+				"Component": "Transform",
+				"data path": "asset\\Block2\\Block2.json"
+			  },
+			  {
+				"Component": "RigidBody",
+				"data path": "asset\\Block2\\Block2.json"
+			  }
+			  
+			]
+		}
 	]
 }
