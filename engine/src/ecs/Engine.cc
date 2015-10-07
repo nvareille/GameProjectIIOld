@@ -29,8 +29,8 @@ void StrawberryMilk::Engine::run() {
     time_end = std::chrono::high_resolution_clock::now();
   }
 
-  mSystem.updateAllSystem([](StrawberryMilk::System *system) {
-	  system->destroy();
+  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
+	  system->destroy(this);
   });
 }
 
@@ -43,7 +43,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
       try {
         std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
 		std::cout << path << std::endl;
-		mSystem.insertSystem(system.first, path);
+		mSystem.insertSystem(system.first, path, this);
       } catch (...) {
 
       }

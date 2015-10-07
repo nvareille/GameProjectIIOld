@@ -1,7 +1,7 @@
 #pragma once
 
 #include <windows.h>
-
+#include <iostream>
 
 namespace StrawberryMilk {
 
@@ -20,7 +20,9 @@ namespace StrawberryMilk {
 
   public:
       void load(std::string const &str) {
-
+        TCHAR NPath[MAX_PATH];
+        GetCurrentDirectory(MAX_PATH, NPath);
+        std::cout << NPath << std::endl;
           mHGetProcIDDLL = LoadLibrary(str.c_str());
           if (mHGetProcIDDLL) {
             mIsInit = true;
