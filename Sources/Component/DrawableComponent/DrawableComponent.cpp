@@ -1,22 +1,15 @@
 #include "DrawableComponent.h"
 
-DrawableComponent::DrawableComponent()
+DrawableComponent::DrawableComponent() : StrawberryMilk::Component::Component(666)
 {
 	mVertexBuffer = 0;
 	mIndexBuffer = 0;
 	mTexture = 0;
 }
 
-
-DrawableComponent::DrawableComponent(const DrawableComponent& other)
-{
-}
-
-
 DrawableComponent::~DrawableComponent()
 {
 }
-
 
 bool DrawableComponent::Init(ID3D10Device* device, int screenWidth, int screenHeight, char* textureFilename, int bitmapWidth, int bitmapHeight, int posYxple, Layout layout)
 {
@@ -59,8 +52,12 @@ bool DrawableComponent::Init(ID3D10Device* device, int screenWidth, int screenHe
 	return true;
 }
 
+void DrawableComponent::init(std::string const &)
+{
+	//GraphSystem->
+}
 
-void DrawableComponent::Destroy()
+void DrawableComponent::destroy()
 {
 	// Release the model texture.
 	ReleaseTexture();

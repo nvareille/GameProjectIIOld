@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+#include <chrono>
+
+#include "../../../engine/component/Component.hh"
 #include "../../System/Graphic/TextureHandler.h"
 #include "../../Component/Transform/Transform.hh"
 #include "../../../engine/src/Vector2.hh"
@@ -12,7 +16,7 @@ enum Layout
 	BACKGROUND
 };
 
-class DrawableComponent
+struct __declspec(dllexport)  DrawableComponent : public StrawberryMilk::Component::Component
 {
 private:
 	struct VertexType
@@ -23,11 +27,13 @@ private:
 
 public:
 	DrawableComponent();
-	DrawableComponent(const DrawableComponent& other);
 	~DrawableComponent();
 
+	void init(std::string const &);
+	void destroy();
+	void update() {};
+
 	bool Init(ID3D10Device*, int, int, char*, int, int, int, Layout);
-	void Destroy();
 	bool Render(ID3D10Device*);
 
 	int GetIndexCount();
@@ -54,8 +60,8 @@ private:
 	int mScreenWidth, mScreenHeight;
 	int mBitmapWidth, mBitmapHeight;
 	int mPreviousPosX, mPreviousPosY;
-	int mPositionX, mPositionY;
-	float mScaleFactor;
+	int mPositionX, mPositionY; //va virer pour le transform
+	float mScaleFactor; //lui aussi
 	//ajout pour un test
 	bool mIsGoingLeft;
 	bool mIsScaling;

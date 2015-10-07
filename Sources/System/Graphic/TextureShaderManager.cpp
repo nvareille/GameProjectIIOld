@@ -30,7 +30,7 @@ bool TextureShaderManager::Init(ID3D10Device* device, HWND hwnd)
 
 
 	// Initialize the shader that will be used to draw the triangle.
-	result = InitShader(device, hwnd, "../GraphEngine/texture.fx");
+	result = InitShader(device, hwnd, "Assets/Src_Graph/Shaders/texture.fx");
 	if (!result)
 	{
 		return false;
@@ -38,7 +38,6 @@ bool TextureShaderManager::Init(ID3D10Device* device, HWND hwnd)
 
 	return true;
 }
-
 
 void TextureShaderManager::Destroy()
 {

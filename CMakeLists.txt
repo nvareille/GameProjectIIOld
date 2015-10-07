@@ -95,3 +95,27 @@ add_library(GraphicSystem SHARED
 	Sources/Component/DrawableComponent/DrawableComponent.cpp
 )
 
+project(DrawableComponent)
+
+include(CheckCXXCompilerFlag)
+set(ENABLE_CXX_EXCEPTIONS = 1)
+
+include_directories(
+	engine/src
+	)
+
+add_library(DrawableComponent SHARED  
+	engine/Component/Component.hh
+	engine/src/Vector2.hh
+	engine/src/Vector2.cc
+	engine/src/Jsoncpp.cpp
+	engine/includes/Engine.hh
+	Sources/Component/Transform/Transform.hh
+
+	Sources/System/Graphic/GraphicsCore.h	Sources/System/Graphic/GraphSystem.h
+	Sources/System/Graphic/TextureHandler.h
+	Sources/System/Graphic/TextureHandler.cpp
+	Sources/Component/DrawableComponent/DrawableComponent.h
+	Sources/Component/DrawableComponent/DrawableComponent.cpp
+	Sources/Component/DrawableComponent/DrawableComponentCreator.cpp
+)

@@ -13,34 +13,41 @@
 #define SCREEN_WIDTH = 800
 #define SCREEN_HEIGHT = 600
 
-struct __declspec(dllexport) GraphSystem : public StrawberryMilk::System
+namespace HeroesSoul
 {
-public:
-	GraphSystem();
-	~GraphSystem();
+	//va s'occuper de la window
+	struct __declspec(dllexport) GraphSystem : public StrawberryMilk::System
+	{
+	public:
+		GraphSystem();
+		~GraphSystem();
 
-	void init();
-	void destroy();
-	void Run();
-	void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
+		void init();
+		void destroy();
+		void Run();
+		void update(StrawberryMilk::Engine *, std::chrono::duration<double>);
 
-	bool registerEntity(StrawberryMilk::Entity::ID) { return true; };
+		bool registerEntity(StrawberryMilk::Entity::ID) { return true; };
 
-	LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
+		LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
-private:
-	bool Update();
-	void InitWindows(int&, int&);
-	void DestroyWindows();
+		ID3D10Device* GetDevice() { return mGraphics->GetDevice(); }
 
-private:
-	LPCSTR mApplicationName;
-	HINSTANCE mHinstance;
-	HWND mHwnd;
+	private:
+		bool Update();
+		void InitWindows(int&, int&);
+		void DestroyWindows();
 
-	GraphicsCore* mGraphics;
+	private:
+		LPCSTR mApplicationName;
+		HINSTANCE mHinstance;
+		HWND mHwnd;
+
+		GraphicsCore* mGraphics;
+	};
+
+	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+
+	static GraphSystem* ApplicationHandle = 0;
+
 };
-
-static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-
-static GraphSystem* ApplicationHandle = 0;
