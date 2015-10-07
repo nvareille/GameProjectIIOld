@@ -33,8 +33,14 @@ namespace StrawberryMilk {
         }
         for (auto e : root["Scene"]) {
           std::list<std::pair<std::string, std::string>> entity;
-          for (auto j: e) {
-            entity.push_back(std::make_pair(j["Component"].asString(), j["data path"].asString()));
+           for (auto j: e) {
+             for (auto x: j) {
+               try {
+               entity.push_back(std::make_pair(x["Component"].asString(), x["data path"].asString()));
+             } catch (...) {
+
+             }
+             }
           }
           mEntity.push(entity);
         }
@@ -62,7 +68,10 @@ namespace StrawberryMilk {
     System &getSystem(std::string const &) const;
 
   public:
-	StrawberryMilk::Component::Component *getComponentFromEntity(StrawberryMilk::Entity::ID, StrawberryMilk::Component::Type::IDComponent);
+    template <class T>
+	   T *getComponentFromEntity(StrawberryMilk::Entity::ID id) {
+       return mEntity.<T>getComponentFromEntity(id);
+     };
 
   public:
     void init();

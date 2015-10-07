@@ -4,12 +4,12 @@
 StrawberryMilk::SystemManager::SystemManager() {}
 StrawberryMilk::SystemManager::~SystemManager() {}
 
-void StrawberryMilk::SystemManager::insertSystem(std::string const &name, std::string const &path) {
+void StrawberryMilk::SystemManager::insertSystem(std::string const &name, std::string const &path, StrawberryMilk::Engine *engine) {
 
   StrawberryMilk::DLLLoader<System *> loader;
   loader.load(path);
   System *system = loader.call("create");
-  system->init();
+  system->init(engine);
   mSystem[name] = system;
 }
 
