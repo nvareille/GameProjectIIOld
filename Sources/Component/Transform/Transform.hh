@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../../../engine/Component/Component.hh"
-#include "../../../engine/src/Vector2.hh"
-#include "../../../engine/src/IJsonSerializable.hh"
+#include "Vector2.hh"
+#include "JsonLoader.hh"
 
 class Transform : public StrawberryMilk::Component::Component, public IJsonSerializable
 {

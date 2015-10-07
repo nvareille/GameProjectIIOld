@@ -87,6 +87,10 @@ project(Transform-Component)
 include(CheckCXXCompilerFlag)
 set(ENABLE_CXX_EXCEPTIONS = 1)
 
+include_directories(
+	engine/src
+	)
+
 add_library(Transform-Component SHARED
 	engine/Component/Component.hh
 	engine/src/Vector2.hh

@@ -22,9 +22,9 @@ namespace StrawberryMilk {
       ~SceneLoader() {};
 
     public:
-      void Serialize(Json::Value &root) { };
+      virtual void Serialize(Json::Value &root) { };
 
-      void Deserialize(Json::Value &root) {
+      virtual void Deserialize(Json::Value &root) {
         for (auto e : root["System"]) {
           mSystem.push(std::make_pair(e["name"].asString(), e["dll"].asString()));
         }
