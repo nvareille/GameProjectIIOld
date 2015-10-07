@@ -20,7 +20,7 @@ namespace HeroesSoul
 		std::cout << "Destruct" << std::endl;
 	}
 
-	void PhysicSystem::init()
+	void PhysicSystem::init(StrawberryMilk::Engine *)
 	{
 
 		std::cout << "Init" << std::endl;
@@ -47,7 +47,7 @@ namespace HeroesSoul
 		}
 	}
 
-	void PhysicSystem::destroy()
+	void PhysicSystem::destroy(StrawberryMilk::Engine *)
 	{
 
 	}

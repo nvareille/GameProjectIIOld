@@ -2,14 +2,13 @@
 
 #include "../../../engine/Component/Component.hh"
 #include "Vector2.hh"
-#include "JsonLoader.hh"
 
 class Transform : public StrawberryMilk::Component::Component, public IJsonSerializable
 {
 public:
 	Transform();
 	Transform(StrawberryMilk::Component::Type::IDComponent id);
-	~Transform();
+	virtual ~Transform();
 	Transform(Transform const &&) = delete;
 	Transform(Transform const &) = delete;
 	void operator=(Transform const &) = delete;
@@ -21,8 +20,18 @@ public:
 	virtual void destroy();
 
 public:
-	virtual void Serialize(Json::Value& root);
-	virtual void Deserialize(Json::Value& root);
+	virtual void Serialize(Json::Value &root)
+	{
+		
+	}
+
+	virtual void Deserialize(Json::Value &root)
+	{
+		m_position.x = root["Position"]["x"].asFloat();
+		m_position.y = root["Position"]["y"].asFloat();
+
+		printf("%f %f\n", m_position.x, m_position.y);
+	}
 
 public:
 	StrawberryMilk::Math::Vector2 &Position() { return m_position; };

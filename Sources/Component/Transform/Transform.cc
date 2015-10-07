@@ -25,6 +25,7 @@ void Transform::init(std::string const &str)
 	JsonLoader jl(str);
 
 	jl.LoadFile();
+	jl.showContent();
 	jl.loadObject(this);
 }
 
@@ -37,10 +38,10 @@ void Transform::destroy()
 
 }
 
-void Transform::Serialize(Json::Value& root)
+/*void Transform::Serialize(Json::Value& root)
 {
 }
 
 void Transform::Deserialize(Json::Value& root)
 {
-}
+}*/

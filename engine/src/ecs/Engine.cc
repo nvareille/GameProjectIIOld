@@ -3,7 +3,7 @@
 #include <chrono>
 #include "../../includes/Engine.hh"
 #include "../../system/System.hh"
-#include "../../lib/JsonLoader.hh"
+#include "JsonLoader.hh"
 
 StrawberryMilk::Engine::Engine() : mContinue(true) {}
 StrawberryMilk::Engine::~Engine() {}
@@ -29,8 +29,8 @@ void StrawberryMilk::Engine::run() {
     time_end = std::chrono::high_resolution_clock::now();
   }
 
-  mSystem.updateAllSystem([](StrawberryMilk::System *system) {
-	  system->destroy();
+  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
+	  system->destroy(this);
   });
 }
 
@@ -42,7 +42,8 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
       std::pair<std::string, std::string> system = e.top();
       try {
         std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
-        mSystem.insertSystem(system.first, path);
+		std::cout << path << std::endl;
+		mSystem.insertSystem(system.first, path, this);
       } catch (...) {
 
       }

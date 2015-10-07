@@ -40,10 +40,6 @@ project(Physic-System)
 include(CheckCXXCompilerFlag)
 set(ENABLE_CXX_EXCEPTIONS = 1)
 
-include_directories(
-	engine/src
-	)
-
 add_library(physic-System SHARED 
 
 	engine/system/System.hh
@@ -52,6 +48,7 @@ add_library(physic-System SHARED
 	engine/src/Vector2.cc
 	engine/src/Jsoncpp.cpp
 	engine/includes/Engine.hh
+	engine/src/JsonSerializer.cpp
 
 	Sources/System/Physic/Physic.hh
 	Sources/System/Physic/Physic.cc
@@ -86,10 +83,6 @@ project(Transform-Component)
 
 include(CheckCXXCompilerFlag)
 set(ENABLE_CXX_EXCEPTIONS = 1)
-
-include_directories(
-	engine/src
-	)
 
 add_library(Transform-Component SHARED
 	engine/Component/Component.hh

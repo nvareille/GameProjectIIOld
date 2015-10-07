@@ -6,8 +6,8 @@
 #include "SystemManager.hh"
 #include "EntityManager.hh"
 #include "ComponentManager.hh"
-#include "../lib/json/json.h"
-#include "../lib/IJsonSerializable.hh"
+#include "json/json.h"
+#include "IJsonSerializable.hh"
 
 
 namespace StrawberryMilk {
@@ -33,8 +33,14 @@ namespace StrawberryMilk {
         }
         for (auto e : root["Scene"]) {
           std::list<std::pair<std::string, std::string>> entity;
-          for (auto j: e) {
-            entity.push_back(std::make_pair(j["Component"].asString(), j["data path"].asString()));
+           for (auto j: e) {
+             for (auto x: j) {
+               try {
+               entity.push_back(std::make_pair(x["Component"].asString(), x["data path"].asString()));
+             } catch (...) {
+
+             }
+             }
           }
           mEntity.push(entity);
         }

@@ -22,7 +22,7 @@ namespace HeroesSoul
 		std::cout << "Destruct" << std::endl;
 	}
 
-	void UpdateSystem::init()
+	void UpdateSystem::init(StrawberryMilk::Engine *)
 	{
 
 		std::cout << "Init" << std::endl;
@@ -42,7 +42,7 @@ namespace HeroesSoul
 
 	}
 
-	void UpdateSystem::destroy()
+	void UpdateSystem::destroy(StrawberryMilk::Engine *)
 	{
 
 	}

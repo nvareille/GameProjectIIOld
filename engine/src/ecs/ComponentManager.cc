@@ -30,10 +30,10 @@ void StrawberryMilk::Component::ComponentManager::unloadComponent(std::string co
 StrawberryMilk::Component::Component *StrawberryMilk::Component::ComponentManager::createComponent(std::string const &name) {
   auto it = mComponent.find(name);
 
-  //Strange exception here
-  /*if (it != mComponent.end()) {
+
+  if (it == mComponent.end()) {
     throw std::invalid_argument("Component was already found in the Component Manager");
-  }*/
+  }
 
   return (*it).second.call("create");
 }

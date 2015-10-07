@@ -1,9 +1,8 @@
 #pragma once
 
 #include "../../Component/Transform/Transform.hh"
-#include "../../../engine/src/Vector2.hh"
 
-class RigidBody : public StrawberryMilk::Component::Component
+class RigidBody : public StrawberryMilk::Component::Component, public IJsonSerializable
 {
 public:
 	RigidBody(StrawberryMilk::Component::Type::IDComponent);
@@ -17,6 +16,16 @@ public:
 	virtual void init(std::string const &);
 	virtual void update();
 	virtual void destroy();
+
+	virtual void Serialize(Json::Value &)
+	{
+
+	}
+
+	virtual void Deserialize(Json::Value &root)
+	{
+		//m_isCircle = root["RigidBody"][]
+	}
 
 public:
 	float GetMass();

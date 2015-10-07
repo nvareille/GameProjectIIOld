@@ -1,14 +1,13 @@
 #pragma once
 
 #include <stdexcept>
-#include "IJsonSerializable.hh"
-#include "json/json.h"
+#include "JsonLoader.hh"
 
 namespace StrawberryMilk
 {
 	namespace Math
 	{
-		class Vector2 : public IJsonSerializable
+		class Vector2
 		{
 		public:
 			float x;
@@ -34,8 +33,8 @@ namespace StrawberryMilk
 			void operator*=(float);
 			void operator/=(float); /* Throw a standard exception(invalid argument) */
 
-			void Serialize(Json::Value &);
-			void Deserialize(Json::Value &);
+			virtual void Serialize(Json::Value&);
+			virtual void Deserialize(Json::Value&);
 		};
 
 		/* operator overload for epression v3 * v3*/

@@ -22,10 +22,11 @@
   "Scene": [
 	{
       "Main character":
-	  {
-        "Component": "Transform",
-        "data path": "asset\\test\\test.json"
-      }
+	  [
+		  {
+			"Component": "Transform",
+			"data path": "asset\\test\\test.json"
+		  }]
     }
 	]
 }
