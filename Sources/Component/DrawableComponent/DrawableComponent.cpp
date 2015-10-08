@@ -121,7 +121,6 @@ bool DrawableComponent::Render(ID3D10Device* device)
 {
 	bool result;
 
-
 	// Re-build the dynamic vertex buffer for rendering to possibly a different location on the screen.
 	result = UpdateBuffers();
 	if (!result)
@@ -275,8 +274,8 @@ bool DrawableComponent::UpdateBuffers()
 	m_previousPosX = _positionX;
 	m_previousPosY = _positionY;*/
 
-	//MovingExample();
-	//ScaleExample();
+	MovingExample();
+	ScaleExample();
 
 	/*// Calculate the screen coordinates of the left side of the bitmap.
 	left = (float)((m_screenWidth / 2) * -1) + (float)_positionX;
