@@ -27,7 +27,7 @@ namespace HeroesSoul
 		void Run();
 		void update(StrawberryMilk::Engine *, double);
 
-		bool registerEntity(StrawberryMilk::Entity::ID) { return true; };
+		bool registerEntity(StrawberryMilk::Entity::ID);
 
 		LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
