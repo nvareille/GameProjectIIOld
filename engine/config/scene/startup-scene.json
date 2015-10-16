@@ -2,12 +2,16 @@
 	"System":
 	[
 		{
-			"name": "Physic",
+		"name": "Physic",
 		  "dll": "physic-System.dll"
 		},
 		{
 		  "name": "Update",
 		  "dll": "update-System.dll"
+		},
+		{
+		  "name": "GraphicSystem",
+		  "dll": "GraphicSystem.dll"
 		}
 	  ],
 	  "Component":
@@ -19,6 +23,10 @@
 		{
 		  "name": "RigidBody",
 		  "dll": "RigidBody-Component.dll"
+		},
+		{
+		  "name": "DrawableComponent",
+		  "dll": "DrawableComponent.dll"
 		}
 	  ],
 	  "Scene":
@@ -32,6 +40,10 @@
 			  },
 			  {
 				"Component": "RigidBody",
+				"data path": "asset\\Block1\\Block1.json"
+			  },
+			  {
+				"Component": "DrawableComponent",
 				"data path": "asset\\Block1\\Block1.json"
 			  }
 			  

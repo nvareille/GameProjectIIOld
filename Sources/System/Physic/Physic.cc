@@ -21,7 +21,7 @@ namespace HeroesSoul
 	}
 
 	void PhysicSystem::init(StrawberryMilk::Engine *engine)
-	{
+	{	
 		m_engine = engine;
 		std::cout << "Init" << std::endl;
 	}

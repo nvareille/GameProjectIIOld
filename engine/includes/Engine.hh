@@ -65,7 +65,10 @@ namespace StrawberryMilk {
     Engine operator=(Engine const &) = delete;
 
   public:
-    System &getSystem(std::string const &) const;
+	  System &getSystemFromSystemManager(std::string const &str) const 
+	  {
+		  return mSystem.getSystem(str);
+	  }
 
   public:
     template <class T>

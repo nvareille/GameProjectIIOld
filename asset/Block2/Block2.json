@@ -5,16 +5,16 @@
 		"mass": 1,
 		"Forces":
 		{
-			"x": 100,
-			"y": 100
+			"x": 0,
+			"y": 0
 		},
 		"Dimensions":
 		{
 			"x": 100,
 			"y": 100
 		},
-		"AirResistance": 0.999,
-		"IsKinematic": false,
+		"AirResistance": 0.0,
+		"IsKinematic": true,
 		"Impulse": 15
 	},
 	"Transform":

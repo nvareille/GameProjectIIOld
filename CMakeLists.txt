@@ -112,3 +112,95 @@ add_library(RigidBody-Component SHARED
 	Sources/Component/RigidBody/RigidBody.hh
 	Sources/Component/RigidBody/RigidBody.cc
 )
+
+link_directories(Sources/Librairies/Microsoft_DirectX_SDK/Lib/x86)
+
+project(GraphicSystem)
+
+include(CheckCXXCompilerFlag)
+set(ENABLE_CXX_EXCEPTIONS = 1)
+
+include_directories(
+	engine/src
+	Sources/Librairies/Microsoft_DirectX_SDK/Include 
+	)
+
+add_library(GraphicSystem SHARED 
+	Sources/Librairies/Microsoft_DirectX_SDK/Lib/x86
+
+	engine/Component/Component.hh
+	engine/src/Vector2.hh
+	engine/src/Vector2.cc
+	engine/src/Jsoncpp.cpp
+	engine/src/JsonSerializer.cpp
+	engine/includes/Engine.hh
+	engine/src/ecs/Engine.cc
+	Sources/Component/Transform/Transform.hh
+
+	Sources/System/Graphic/GraphicsCore.h	
+	Sources/System/Graphic/GraphSystem.h
+	Sources/System/Graphic/TextureHandler.h
+	Sources/System/Graphic/Camera.h
+	Sources/System/Graphic/D3DWrapper.h
+	Sources/System/Graphic/TextureShaderManager.h
+	Sources/Component/DrawableComponent/DrawableComponent.h
+	
+	Sources/System/Graphic/TextureShaderManager.cpp
+	Sources/System/Graphic/TextureHandler.cpp
+	Sources/System/Graphic/D3DWrapper.cpp
+	Sources/System/Graphic/Camera.cpp
+	Sources/Component/DrawableComponent/DrawableComponent.cpp
+	engine/src/ecs/ComponentManager.cc
+	engine/src/ecs/EntityManager.cc
+	Sources/System/Graphic/GraphicsCore.cpp
+	Sources/System/Graphic/GraphSystem.cpp
+	engine/src/ecs/SystemManager.cc
+	Sources/System/Graphic/GraphSystemCreator.cpp
+)
+
+target_link_libraries(GraphicSystem d3dx10)
+
+project(DrawableComponent)
+
+include(CheckCXXCompilerFlag)
+set(ENABLE_CXX_EXCEPTIONS = 1)
+
+include_directories(
+	engine/src
+	Sources/Librairies/Microsoft_DirectX_SDK/Include 
+	)
+	
+add_library(DrawableComponent SHARED
+  
+	engine/Component/Component.hh
+	engine/src/Vector2.hh
+	engine/src/Vector2.cc
+	engine/src/Jsoncpp.cpp
+	engine/src/JsonSerializer.cpp
+	engine/includes/Engine.hh
+	engine/src/ecs/Engine.cc
+	Sources/Component/Transform/Transform.hh
+
+	Sources/System/Graphic/GraphicsCore.h	
+	Sources/System/Graphic/GraphSystem.h
+	Sources/System/Graphic/TextureHandler.h
+	Sources/System/Graphic/Camera.h
+	Sources/System/Graphic/D3DWrapper.h
+	Sources/System/Graphic/TextureShaderManager.h
+	Sources/Component/DrawableComponent/DrawableComponent.h
+	
+	Sources/System/Graphic/TextureShaderManager.cpp
+	Sources/System/Graphic/TextureHandler.cpp
+	Sources/System/Graphic/D3DWrapper.cpp
+	Sources/System/Graphic/Camera.cpp
+	Sources/Component/DrawableComponent/DrawableComponent.cpp
+	Sources/Component/DrawableComponent/DrawableComponentCreator.cpp
+	engine/src/ecs/ComponentManager.cc
+	engine/src/ecs/EntityManager.cc
+	Sources/System/Graphic/GraphicsCore.cpp
+	Sources/System/Graphic/GraphSystem.cpp
+	engine/src/ecs/SystemManager.cc
+	
+)
+
+target_link_libraries(DrawableComponent d3dx10)
