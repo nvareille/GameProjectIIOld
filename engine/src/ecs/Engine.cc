@@ -86,6 +86,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
         StrawberryMilk::Entity::ID id_entity = mEntity.createEntity();
         for (auto comp: instr) {
           StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
+          component->init(comp.second, this, id_entity);
           mEntity.addComponentOnEntity(id_entity, component);
         }
 

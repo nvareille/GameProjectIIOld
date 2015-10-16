@@ -1,10 +1,9 @@
 {
-  "System": [  ],
+  "System": [ {
+    "name": "test",
+    "dll": "test.dll"
+    } ],
   "Component": [
-    {
-      "name": "Transform",
-      "dll": "Transform-Component.dll"
-    },
     {
       "name": "test",
       "dll": "test.dll"
@@ -17,10 +16,6 @@
         "data path": ""
       }, {
         "Component": "test",
-        "data path": ""
-      }],
-      "Main character": [{
-        "Component": "Transform",
         "data path": ""
       }]
     }

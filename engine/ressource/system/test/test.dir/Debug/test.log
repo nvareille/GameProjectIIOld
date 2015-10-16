@@ -1,4 +1,4 @@
-﻿Build started 02/10/2015 15:10:08.
+﻿Build started 07/10/2015 16:32:50.
      1>Project "C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\test.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D test_EXPORTS /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"test.dir\Debug\\" /Fd"test.dir\Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt C:\Users\yiurule\Desktop\GameProjectII\GameProjectII\engine\ressource\system\test\test.cpp
@@ -11,4 +11,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.87
+Time Elapsed 00:00:01.31
