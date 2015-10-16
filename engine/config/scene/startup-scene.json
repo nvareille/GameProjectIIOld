@@ -1,10 +1,6 @@
 {
   "System": [
     {
-      "name": "Physic",
-      "dll": "physic-System.dll"
-	},
-    {
       "name": "GraphicSystem",
       "dll": "GraphicSystem.dll"
 	}
@@ -30,28 +26,6 @@
 			"Component": "DrawableComponent",
 			"data path": ""
 		},
-		{
-			"Component": "Transform",
-			"data path": "asset\\Block1\\Block1.json"
-		},
-		{
-			"Component": "RigidBody",
-			"data path": "asset\\Block1\\Block1.json"
-		}
-		],
-		"COUCOU2": [
-		{
-			"Component": "DrawableComponent",
-			"data path": ""
-		},
-		{
-			"Component": "Transform",
-			"data path": "asset\\Block2\\Block2.json"
-		},
-		{
-			"Component": "RigidBody",
-			"data path": "asset\\Block2\\Block2.json"
-		}
 		]
     }
 	]

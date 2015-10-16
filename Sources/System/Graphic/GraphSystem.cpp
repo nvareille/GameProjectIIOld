@@ -52,13 +52,6 @@ namespace HeroesSoul
 		return;
 	}
 
-	bool registerEntity(StrawberryMilk::Entity::ID entity)
-	{
-
-
-		return true;
-	}
-
 	void GraphSystem::Run()
 	{
 		MSG msg;
