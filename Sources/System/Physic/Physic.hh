@@ -43,6 +43,7 @@ namespace HeroesSoul
 
 	private:
 		std::list<StrawberryMilk::Entity::ID> m_entities;
+		StrawberryMilk::Engine *m_engine;
 	};
 
 	class Square

@@ -20,9 +20,9 @@ namespace HeroesSoul
 		std::cout << "Destruct" << std::endl;
 	}
 
-	void PhysicSystem::init(StrawberryMilk::Engine *)
+	void PhysicSystem::init(StrawberryMilk::Engine *engine)
 	{
-
+		m_engine = engine;
 		std::cout << "Init" << std::endl;
 	}
 
@@ -37,9 +37,12 @@ namespace HeroesSoul
 				auto entityNext = entity;
 				++entityNext;
 
-				for (; entityNext != m_entities.end(); ++entityNext)
+				if (entityNext != m_entities.end())
 				{
-					CompareEntities(*entity, *entityNext, engine);
+					for (; entityNext != m_entities.end(); ++entityNext)
+					{
+						CompareEntities(*entity, *entityNext, engine);
+					}
 				}
 			}
 			catch (...)
@@ -55,11 +58,19 @@ namespace HeroesSoul
 	}
 
 	bool PhysicSystem::registerEntity(StrawberryMilk::Entity::ID entity)
-	{
-		std::cout << "ADDED TO PHYSIC SYSTEM" << std::endl;
+	{	
+		try
+		{
+			m_engine->getComponentFromEntity<RigidBody>(entity);
+			std::cout << "ADDED TO PHYSIC SYSTEM" << std::endl;
 
-		m_entities.push_back(entity);
-		return (true);
+			m_entities.push_back(entity);
+			return (true);
+		}
+		catch (...)
+		{
+			return (false);
+		}	
 	}
 
 	void PhysicSystem::CompareEntities(StrawberryMilk::Entity::ID entity, StrawberryMilk::Entity::ID collisionCandidate, StrawberryMilk::Engine *engine)
@@ -163,8 +174,8 @@ namespace HeroesSoul
 
 		StrawberryMilk::Math::Vector2 impulse = normal * j;
 
-		body[0]->SetForce(impulse * body[0]->GetImpulse() * (-1 / body[0]->GetMass()));
-		body[1]->SetForce(impulse * body[1]->GetImpulse() * (1 / body[1]->GetMass()));
+		/*body[0]->SetForce(impulse * body[0]->GetImpulse() * (-1 / body[0]->GetMass()));
+		body[1]->SetForce(impulse * body[1]->GetImpulse() * (1 / body[1]->GetMass()));*/
 	}
 
 	float PhysicSystem::ComputeDotProduct(const StrawberryMilk::Math::Vector2 &v1, const StrawberryMilk::Math::Vector2 &v2) const
