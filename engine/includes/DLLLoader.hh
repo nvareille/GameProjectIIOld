@@ -20,14 +20,11 @@ namespace StrawberryMilk {
 
   public:
       void load(std::string const &str) {
-        TCHAR NPath[MAX_PATH];
-        GetCurrentDirectory(MAX_PATH, NPath);
-        std::cout << NPath << std::endl;
           mHGetProcIDDLL = LoadLibrary(str.c_str());
           if (mHGetProcIDDLL) {
             mIsInit = true;
           } else {
-            throw std::invalid_argument("Cannot load DLL: Wrong path");
+            throw std::invalid_argument("Cannot load DLL");
           }
       };
 

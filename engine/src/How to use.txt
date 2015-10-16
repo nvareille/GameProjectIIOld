@@ -1,3 +1,4 @@
+FOr JSON:
 #include "Vector3.hh"
 #include "JsonLoader.hh"
 
@@ -11,3 +12,48 @@ Vector3 v9;
 jl.loadObject(&v9);
 jl.setOutput("save.json");
 jl.saveObject(&v9, false);
+
+
+FOR THREAD:
+
+#include "ThreadPool.h"
+#include <iostream>
+
+void show()
+{
+	int i = 1;
+	while (i < 12)
+	{
+	std::cout << "Suis pas carre" << std::endl;
+	i++;
+}
+}
+
+void showtoo()
+{
+	int i = 1;
+	while (i < 12)
+	{
+		std::cout << "Suis pas rond" << std::endl;
+		i++;
+	}
+}
+
+
+int main()
+{
+	ThreadPool t(2);
+
+	int o;
+	std::cout << "quitravaillent" << t.getWorkingThreads() << std::endl;
+	t.addTask(show);
+	std::cout << "quitravaillent" << t.getWorkingThreads() << std::endl;
+	t.addTask(showtoo);
+	std::cout << "quitravaillent" << t.getWorkingThreads() << std::endl;
+	
+	std::cout << "quitravaillent" << t.getWorkingThreads() << std::endl;
+	//t.terminate();
+	std::cout << "quitravaillent" << t.getWorkingThreads() << std::endl;
+	std::cin >> o;
+	return (0);
+}

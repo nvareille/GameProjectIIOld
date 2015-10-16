@@ -1,7 +1,9 @@
 #include <algorithm>
 #include <utility>
 #include <chrono>
+#include <functional>
 #include "../../includes/Engine.hh"
+#include "../../includes/ThreadPool.hh"
 #include "../../system/System.hh"
 #include "JsonLoader.hh"
 
@@ -14,20 +16,27 @@ void StrawberryMilk::Engine::stop() {
 
 void StrawberryMilk::Engine::run() {
 
-	std::chrono::high_resolution_clock::time_point prev = std::chrono::high_resolution_clock::now();
-	std::chrono::high_resolution_clock::time_point last = std::chrono::high_resolution_clock::now();
-	double delta = 0;
+  std::chrono::high_resolution_clock::time_point time_begin = std::chrono::high_resolution_clock::now();
+  std::chrono::high_resolution_clock::time_point time_end = std::chrono::high_resolution_clock::now();
+  unsigned concurentThreadsSupported = std::thread::hardware_concurrency();
+  concurentThreadsSupported = concurentThreadsSupported == 0 ? 1 : concurentThreadsSupported;
+  std::cout << concurentThreadsSupported << std::endl;
+  StrawberryMilk::Thread::ThreadPool threadpool(concurentThreadsSupported);
 
   while (mContinue) {
 	  prev = std::chrono::high_resolution_clock::now();	  
 	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
-      if (system->isActive()) {
-        system->update(this, delta / 1000);
-      }
+		  std::function<void()> task = [&]() {
+			  if (system->isActive()) {
+				  system->update(this, delta);
+			  }
+		  };
+		  threadpool.addTask(task);
 	  });
-	  Sleep(16);
-    last = std::chrono::high_resolution_clock::now();
-	delta = std::chrono::duration_cast<std::chrono::milliseconds>(last - prev).count();
+    time_begin = time_end;
+    time_end = std::chrono::high_resolution_clock::now();
+	  while (threadpool.getWorkingThreads() != 0);
+    std::cout << "lol" << std::endl;
   }
 
   mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
@@ -79,6 +88,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
         for (auto comp: instr)
 		{
           StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
+          component->init(comp.second, this, id_entity);
           mEntity.addComponentOnEntity(id_entity, component);
 		  component->init(comp.second, this);
 		}

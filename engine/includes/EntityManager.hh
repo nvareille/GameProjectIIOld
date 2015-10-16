@@ -3,9 +3,11 @@
 #include <vector>
 #include <list>
 #include <tuple>
-#include "../component/Component.hh"
 
 namespace StrawberryMilk {
+	namespace Component {
+		class Component;
+	}
 
   namespace Entity {
     typedef unsigned int ID;

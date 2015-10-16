@@ -1,10 +1,10 @@
 #pragma once
 
-#include <string>
+#include "../includes/EntityManager.hh"
 
 namespace StrawberryMilk {
 
-	class Engine;
+  class Engine;
 
   namespace Component {
 
@@ -26,9 +26,9 @@ namespace StrawberryMilk {
 
       // system loop
     public:
-      virtual void init(std::string const &, StrawberryMilk::Engine *) = 0;
-	  virtual void update(StrawberryMilk::Engine *) = 0;
-	  virtual void destroy(StrawberryMilk::Engine *) = 0;
+      virtual void init(std::string const &, StrawberryMilk::Engine *, StrawberryMilk::Entity::ID) = 0;
+      virtual void update(StrawberryMilk::Engine *) = 0;
+      virtual void destroy(StrawberryMilk::Engine *) = 0;
 
       // getter
     public:
