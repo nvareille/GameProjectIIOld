@@ -16,7 +16,7 @@ RigidBody::~RigidBody()
 {
 }
 
-void RigidBody::init(std::string const &str, StrawberryMilk::Engine *)
+void RigidBody::init(std::string const &str, StrawberryMilk::Engine *, StrawberryMilk::Entity::ID)
 {
 	JsonLoader jl(str);
 

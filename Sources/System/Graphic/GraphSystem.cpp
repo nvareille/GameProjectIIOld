@@ -89,7 +89,7 @@ namespace HeroesSoul
 	{
 		bool result;
 
-		if (!(mGraphics->Update()))
+//		if (!(mGraphics->Update()))
 		{
 			return false;
 		}
@@ -99,7 +99,7 @@ namespace HeroesSoul
 
 	void GraphSystem::update(StrawberryMilk::Engine *engine, double deltatime)
 	{
-		if (!(mGraphics->Update())){
+		if (!(mGraphics->Update(engine))){
 			//throw exception;
 			return;
 		}

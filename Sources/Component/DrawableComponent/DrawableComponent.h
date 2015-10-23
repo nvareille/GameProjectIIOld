@@ -32,13 +32,13 @@ public:
 	DrawableComponent();
 	~DrawableComponent();
 
-	void init(std::string const &, StrawberryMilk::Engine *);
+	void init(std::string const &, StrawberryMilk::Engine *, StrawberryMilk::Entity::ID);
 	void destroy(StrawberryMilk::Engine *);
 	void update(StrawberryMilk::Engine *) {};
 
 	void Destroy();
 	bool Init(ID3D10Device*, int, int, char*, int, int, int, Layout);
-	bool Render(ID3D10Device*);
+	bool Render(ID3D10Device*, StrawberryMilk::Engine *);
 
 	int GetIndexCount();
 	ID3D10ShaderResourceView* GetTexture();
@@ -47,7 +47,7 @@ public:
 private:
 	bool InitBuffers(ID3D10Device*);
 	void DestroyBuffers();
-	bool UpdateBuffers();
+	bool UpdateBuffers(StrawberryMilk::Engine *);
 	void RenderBuffers(ID3D10Device*);
 
 	bool LoadTexture(ID3D10Device*, char*);
@@ -56,6 +56,7 @@ private:
 	void ScaleExample();
 
 private:
+	StrawberryMilk::Entity::ID mId;
 	Layout mLayout;
 	int mTextureId;
 	ID3D10Buffer *mVertexBuffer, *mIndexBuffer;

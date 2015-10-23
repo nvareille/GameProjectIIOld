@@ -22,7 +22,7 @@ public:
 
 	bool Init(int, int, HWND);
 	void Destroy();
-	bool Update();
+	bool Update(StrawberryMilk::Engine *);
 
 	bool AddDrawableObject(DrawableComponent*);
 	bool RemoveDrawableObject();
@@ -30,7 +30,7 @@ public:
 	ID3D10Device* GetDevice() { return mD3DWrapper->GetDevice(); }
 
 private:
-	bool Render(float);
+	bool Render(float, StrawberryMilk::Engine *engine);
 
 private:
 	D3DWrapper* mD3DWrapper;

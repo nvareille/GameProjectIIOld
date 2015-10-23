@@ -13,7 +13,7 @@ public:
 
 	// system loop
 public:
-	virtual void init(std::string const &, StrawberryMilk::Engine *);
+	virtual void init(std::string const &, StrawberryMilk::Engine *, StrawberryMilk::Entity::ID);
 	virtual void update(StrawberryMilk::Engine *);
 	virtual void destroy(StrawberryMilk::Engine *);
 

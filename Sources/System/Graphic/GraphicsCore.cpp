@@ -92,7 +92,7 @@ void GraphicsCore::Destroy()
 	return;
 }
 
-bool GraphicsCore::Update()
+bool GraphicsCore::Update(StrawberryMilk::Engine *engine)
 {
 	bool result;
 	static float rotation = 0.0f;
@@ -106,7 +106,7 @@ bool GraphicsCore::Update()
 	}
 
 	// Render the graphics scene.
-	result = Render(rotation);
+	result = Render(rotation, engine);
 	if (!result)
 	{
 		return false;
@@ -115,7 +115,7 @@ bool GraphicsCore::Update()
 	return true;
 }
 
-bool GraphicsCore::Render(float rotation)
+bool GraphicsCore::Render(float rotation, StrawberryMilk::Engine *engine)
 {
 	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
 
@@ -138,7 +138,7 @@ bool GraphicsCore::Render(float rotation)
 	for each (DrawableComponent* obj in mDrawableComponents)
 	{
 		
-		if (!(obj->Render(mD3DWrapper->GetDevice())))
+		if (!(obj->Render(mD3DWrapper->GetDevice(), engine)))
 		{
 			return false;
 		}

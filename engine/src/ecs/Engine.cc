@@ -24,11 +24,11 @@ void StrawberryMilk::Engine::run() {
   StrawberryMilk::Thread::ThreadPool threadpool(concurentThreadsSupported);
 
   while (mContinue) {
-	  prev = std::chrono::high_resolution_clock::now();	  
+	  std::chrono::duration<double> delta = std::chrono::duration_cast<std::chrono::duration<double>>(time_end - time_begin);
 	  mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
 		  std::function<void()> task = [&]() {
 			  if (system->isActive()) {
-				  system->update(this, delta);
+				  system->update(this, delta.count());
 			  }
 		  };
 		  threadpool.addTask(task);
@@ -36,7 +36,6 @@ void StrawberryMilk::Engine::run() {
     time_begin = time_end;
     time_end = std::chrono::high_resolution_clock::now();
 	  while (threadpool.getWorkingThreads() != 0);
-    std::cout << "lol" << std::endl;
   }
 
   mSystem.updateAllSystem([&](StrawberryMilk::System *system) {
@@ -45,12 +44,9 @@ void StrawberryMilk::Engine::run() {
 }
 
 void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scene) {
-	std::cout << "debug4";
   {
     auto e = scene.getSystem();
-	std::cout << "debug4.5";
     while (!e.empty()) {
-		std::cout << "debug5";
       std::pair<std::string, std::string> system = e.top();
       try {
         std::string path = "engine\\ressource\\system\\" + system.first + "\\" + system.second;
@@ -90,7 +86,7 @@ void StrawberryMilk::Engine::loadScene(StrawberryMilk::Engine::SceneLoader &scen
           StrawberryMilk::Component::Component *component = mComponent.createComponent(comp.first);
           component->init(comp.second, this, id_entity);
           mEntity.addComponentOnEntity(id_entity, component);
-		  component->init(comp.second, this);
+		  component->init(comp.second, this, id_entity);
 		}
 
 		/*WARNING TO FIX*/
@@ -116,15 +112,10 @@ void StrawberryMilk::Engine::init() {
    JsonLoader jl("engine\\config\\scene\\startup-scene.json");
    StrawberryMilk::Engine::SceneLoader scene;
 
-   std::cout << "debug1";
    jl.LoadFile();
    jl.showContent();
-   std::cout << "debug2";
    jl.loadObject(&scene);
-   std::cout << "debug3";
    this->loadScene(scene);
-   std::cout << "debugEnd";
-
 }
 
 void StrawberryMilk::Engine::loadScene(std::string const &path) {

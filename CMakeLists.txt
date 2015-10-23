@@ -23,6 +23,7 @@ add_executable (
 	engine/includes/SystemManager.hh
 	engine/includes/EntityManager.hh
 	engine/includes/ComponentManager.hh
+	engine/includes/ThreadPool.hh
 
 	engine/lib/jsoncpp.cpp
 	engine/lib/JsonSerializer.cpp
@@ -180,6 +181,8 @@ add_library(DrawableComponent SHARED
 	engine/includes/Engine.hh
 	engine/src/ecs/Engine.cc
 	Sources/Component/Transform/Transform.hh
+	Sources/Component/Transform/Transform.cc
+
 
 	Sources/System/Graphic/GraphicsCore.h	
 	Sources/System/Graphic/GraphSystem.h

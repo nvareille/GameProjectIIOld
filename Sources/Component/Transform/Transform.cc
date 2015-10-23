@@ -20,7 +20,7 @@ Transform::~Transform()
 {
 }
 
-void Transform::init(std::string const &str, StrawberryMilk::Engine *)
+void Transform::init(std::string const &str, StrawberryMilk::Engine *, StrawberryMilk::Entity::ID)
 {
 	JsonLoader jl(str);
 

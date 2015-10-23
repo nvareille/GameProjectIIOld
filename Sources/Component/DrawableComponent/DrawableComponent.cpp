@@ -53,11 +53,13 @@ bool DrawableComponent::Init(ID3D10Device* device, int screenWidth, int screenHe
 	return true;
 }
 
-void DrawableComponent::init(std::string const &, StrawberryMilk::Engine *engine)
+void DrawableComponent::init(std::string const &, StrawberryMilk::Engine *engine, StrawberryMilk::Entity::ID id)
 {
 //	GraphSystem tmpGraph;
 
 	std::cout << "init drawable" << std::endl;
+
+	mId = id;
 
 	HeroesSoul::GraphSystem* tmp;
 	tmp = dynamic_cast<HeroesSoul::GraphSystem*>(&engine->getSystemFromSystemManager("GraphicSystem"));
@@ -117,12 +119,12 @@ void DrawableComponent::Destroy()
 }
 
 
-bool DrawableComponent::Render(ID3D10Device* device)
+bool DrawableComponent::Render(ID3D10Device* device, StrawberryMilk::Engine *engine)
 {
 	bool result;
 
 	// Re-build the dynamic vertex buffer for rendering to possibly a different location on the screen.
-	result = UpdateBuffers();
+	result = UpdateBuffers(engine);
 	if (!result)
 	{
 		return false;
@@ -255,39 +257,21 @@ void DrawableComponent::DestroyBuffers()
 }
 
 
-bool DrawableComponent::UpdateBuffers()
+bool DrawableComponent::UpdateBuffers(StrawberryMilk::Engine * engine)
 {
 	float left, right, top, bottom;
-	VertexType* vertices;
-	void* verticesPtr;
+	VertexType *vertices;
+	void *verticesPtr;
 	HRESULT result;
-
-
-	/*// If the position we are rendering this bitmap to has not changed then don't update the vertex buffer since it
-	// currently has the correct parameters.
-	if((_positionX == m_previousPosX) && (_positionY == m_previousPosY))
-	{
-	return true;
-	}
-
-	// If it has changed then update the position it is being rendered to.
-	m_previousPosX = _positionX;
-	m_previousPosY = _positionY;*/
+	Transform *transform;
 
 	//MovingExample();
 	//ScaleExample();
 
-	/*// Calculate the screen coordinates of the left side of the bitmap.
-	left = (float)((m_screenWidth / 2) * -1) + (float)_positionX;
-
-	// Calculate the screen coordinates of the right side of the bitmap.
-	right = left + (float)m_bitmapWidth;
-
-	// Calculate the screen coordinates of the top of the bitmap.
-	top = (float)(m_screenHeight / 2) - (float)_positionY;
-
-	// Calculate the screen coordinates of the bottom of the bitmap.
-	bottom = top - (float)m_bitmapHeight;*/
+	transform = engine->getComponentFromEntity<Transform>(mId);
+	
+	mPositionX = transform->m_position.x;
+	mPositionY = transform->m_position.y;
 
 
 	// Calculate the screen coordinates of the left side of the bitmap.
